@@ -10,15 +10,13 @@ namespace UnityRobot
 {
 	public class RobotProxy : MonoBehaviour
 	{
-#if UNITY_ANDROID
-		public List<string> bluetoothNames = new List<string>();
-		public string bluetoothName;
+		public List<string> portNames = new List<string>();
+		public string portName;
 
+#if UNITY_ANDROID
 		private AndroidPlugIn _androidPlugIn;
 		private bool _bluetoothArrived = false;
 #else
-		public List<string> portNames = new List<string>();
-		public string portName;
 		public int baudrate = 57600;
 
 		private SerialPort _serialPort;
@@ -59,8 +57,17 @@ namespace UnityRobot
 			go.name = "AndroidPlugIn";
 			go.transform.parent = this.transform;
 			_androidPlugIn = go.AddComponent<AndroidPlugIn>();
-
-			bluetoothName = PlayerPrefs.GetString("BluetoothName");
+			if(_androidPlugIn != null)
+			{
+				_androidPlugIn.OnConnected += OnBluetoothConnected;
+				_androidPlugIn.OnConnecting += OnBluetoothConnecting;
+				_androidPlugIn.OnConnectFail += OnBluetoothFail;
+				_androidPlugIn.OnDisconnected += OnBluetoothDisconnected;
+				_androidPlugIn.OnSearchCompleted += OnBluetoothSearchCompleted;
+				_androidPlugIn.OnFoundDevice += OnBluetoothFoundDevice;
+				_androidPlugIn.OnTxCompleted += OnBluetoothTxCompleted;
+				_androidPlugIn.OnRxArrived += OnBluetoothRxArrived;
+			}
 #else
 			_serialPort = new SerialPort();
 			_serialPort.DtrEnable = true; // win32 hack to try to get DataReceived event to fire
@@ -76,51 +83,6 @@ namespace UnityRobot
 		// Use this for initialization
 		void Start ()
 		{
-#if UNITY_ANDROID
-			_androidPlugIn.OnEventBluetoothConnecting += delegate() 
-			{
-			};
-			
-			_androidPlugIn.OnEventBluetoothConnected += delegate() 
-			{
-				_opened = true;
-				TimeoutReset();
-				Write(new byte[] { (byte)CMD.Ping });
-			};
-			
-			_androidPlugIn.OnEventBluetoothConnectFail += delegate()
-			{
-				if(OnConnectionFailed != null)
-					OnConnectionFailed(this, null);
-			};
-			
-			_androidPlugIn.OnEventBluetoothDisconnected += delegate() 
-			{
-				ErrorDisconnect();
-			};
-			
-			_androidPlugIn.OnEventBluetoothFoundDevice += delegate(string deviceName) 
-			{
-				bluetoothNames.Add(deviceName);
-			};
-			
-			_androidPlugIn.OnEventBluetoothSearchCompleted += delegate() 
-			{
-				if(OnSearchCompleted != null)
-					OnSearchCompleted(this, null);
-			};
-			
-			_androidPlugIn.OnEventBluetoothTxCompleted += delegate() 
-			{
-			};
-			
-			_androidPlugIn.OnEventBluetoothRxArrived += delegate() 
-			{
-				_bluetoothArrived = true;
-			};
-#else
-
-#endif
 		}
 		
 		// Update is called once per frame
@@ -354,7 +316,7 @@ namespace UnityRobot
 
 #if UNITY_ANDROID
 			_bluetoothArrived = false;
-			_androidPlugIn.ConnectBluetooth(bluetoothName);
+			_androidPlugIn.ConnectBluetooth(portName);
 #else
 			try
 			{
@@ -425,7 +387,7 @@ namespace UnityRobot
 		public void PortSearch()
 		{
 #if UNITY_ANDROID
-			bluetoothNames.Clear();
+			portNames.Clear();
 			_androidPlugIn.SearchBluetooth();
 #else
 			portNames.Clear();
@@ -488,5 +450,49 @@ namespace UnityRobot
 			}
 #endif
 		}
+
+#if UNITY_ANDROID
+		private void OnBluetoothConnecting(object sender, EventArgs e)
+		{
+		}
+
+		private void OnBluetoothConnected(object sender, EventArgs e)
+		{
+			_opened = true;
+			TimeoutReset();
+			Write(new byte[] { (byte)CMD.Ping });
+		}
+
+		private void OnBluetoothFail(object sender, EventArgs e)
+		{
+			if(OnConnectionFailed != null)
+				OnConnectionFailed(this, null);
+		}
+
+		private void OnBluetoothDisconnected(object sender, EventArgs e)
+		{
+			ErrorDisconnect();
+		}
+
+		private void OnBluetoothSearchCompleted(object sender, EventArgs e)
+		{
+			if(OnSearchCompleted != null)
+				OnSearchCompleted(this, null);
+		}
+
+		private void OnBluetoothTxCompleted(object sender, EventArgs e)
+		{
+		}
+
+		private void OnBluetoothRxArrived(object sender, EventArgs e)
+		{
+			_bluetoothArrived = true;
+		}
+
+		private void OnBluetoothFoundDevice(object sender, FoundDeviceEventArgs e)
+		{
+			portNames.Add(e.deviceName);
+		}
+#endif
 	}
 }

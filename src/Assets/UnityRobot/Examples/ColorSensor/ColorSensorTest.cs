@@ -7,7 +7,7 @@ using UnityRobot;
 public class ColorSensorTest : MonoBehaviour
 {
 	public RobotProxy robot;
-	public MeshRenderer renderer;
+	public MeshRenderer meshRenderer;
 	public ADCModule r_color;
 	public ADCModule g_color;
 	public ADCModule b_color;
@@ -59,7 +59,7 @@ public class ColorSensorTest : MonoBehaviour
 			GUI.Label(guiRect, string.Format("B color: {0:d}", b));
 			guiRect.y += (guiRect.height + 5);
 
-			renderer.sharedMaterial.color = new Color(r / 1024f, g / 1024f, b / 1024f);
+			meshRenderer.sharedMaterial.color = new Color(r / 1024f, g / 1024f, b / 1024f);
 		}
 		else
 		{

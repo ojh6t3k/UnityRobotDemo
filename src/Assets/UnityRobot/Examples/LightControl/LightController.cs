@@ -7,7 +7,6 @@ namespace UnityRobot
 {
 	public class LightController : MonoBehaviour
 	{
-		public Light light;
 		public ADCModule dial;
 		public DigitalModule button;
 

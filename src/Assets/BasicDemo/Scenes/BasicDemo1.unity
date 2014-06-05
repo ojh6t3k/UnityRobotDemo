@@ -265,6 +265,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 207169600}
   - 108: {fileID: 207169601}
+  - 114: {fileID: 207169602}
   m_Layer: 0
   m_Name: Bottom_Light
   m_TagString: Untagged
@@ -318,6 +319,23 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &207169602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207169599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2525feb5c88f92343be67954653ccbe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dial: {fileID: 1666661450}
+  button: {fileID: 653669025}
+  maxADCValue: 1023
+  minIntensity: .200000003
+  maxIntensity: 3
+  risingEdgeTurnOn: 1
 --- !u!1 &257424779
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +507,6 @@ GameObject:
   - 114: {fileID: 899019177}
   - 114: {fileID: 899019173}
   - 114: {fileID: 899019174}
-  - 114: {fileID: 899019176}
   m_Layer: 0
   m_Name: UnityRobot
   m_TagString: Untagged
@@ -564,24 +581,6 @@ Transform:
   - {fileID: 518583884}
   - {fileID: 1378217198}
   m_Father: {fileID: 0}
---- !u!114 &899019176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 899019172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2525feb5c88f92343be67954653ccbe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  light: {fileID: 207169601}
-  dial: {fileID: 1666661450}
-  button: {fileID: 653669025}
-  maxADCValue: 1023
-  minIntensity: .200000003
-  maxIntensity: 3
-  risingEdgeTurnOn: 1
 --- !u!114 &899019177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robot: {fileID: 899019173}
   balance: {fileID: 899019174}
-  lightController: {fileID: 899019176}
+  lightController: {fileID: 207169602}
   r_color: {fileID: 187967015}
   g_color: {fileID: 910936092}
   b_color: {fileID: 940922569}

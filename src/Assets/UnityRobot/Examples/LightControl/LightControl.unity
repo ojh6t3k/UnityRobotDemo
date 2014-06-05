@@ -224,7 +224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portNames: []
   portName: 
-  baudrate: 57600
   timeoutSec: 5
   modules:
   - {fileID: 508565401}
@@ -352,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2525feb5c88f92343be67954653ccbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 1285751827}
   dial: {fileID: 1792611082}
   button: {fileID: 508565401}
   maxADCValue: 1023
