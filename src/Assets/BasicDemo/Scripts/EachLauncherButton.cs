@@ -22,7 +22,8 @@ public class EachLauncherButton : MonoBehaviour
 	// GameSelect ---------------------------
 	public void GameSelect()
 	{
-		Debug.Log ("Go " + GameName);
+		Debug.Log ("Scene : " + GameName);
+		Application.LoadLevel (GameName);
 	}
 
 }
