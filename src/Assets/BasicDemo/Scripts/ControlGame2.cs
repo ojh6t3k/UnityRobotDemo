@@ -10,7 +10,6 @@ using UnityRobot;
 public class ControlGame2 : MonoBehaviour 
 {
 	public bool _bGamePlay = false;
-	EGameState	_eGameState = EGameState.READY;
 
 	public BalanceSensor	_balanceSensor;
 

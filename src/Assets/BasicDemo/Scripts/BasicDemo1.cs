@@ -92,6 +92,12 @@ public class BasicDemo1 : MonoBehaviour
 			if(_connecting == false)
 			{
 				guiRect.width = 100;
+				if(GUI.Button(guiRect, "Exit") == true)
+				{
+					Application.LoadLevel("BasicDemo_Launcher");
+				}
+				guiRect.y += (guiRect.height + 5);
+
 				if(GUI.Button(guiRect, "Search") == true)
 				{
 					_statusMessage = "Searching...";

@@ -4,14 +4,7 @@ using System;
 using UnityRobot;
 
 
-enum EGameState
-{
-	READY,
-	TITLE,
-	PLAY,
-	PAUSE,
-	GAMEOVER,
-}
+
 
 
 
@@ -20,7 +13,6 @@ enum EGameState
 public class ControlGame1 : MonoBehaviour 
 {
 	public bool _bGamePlay = false;
-	EGameState	_eGameState = EGameState.READY;
 
 	public BalanceSensor	_balanceSensor;
 
