@@ -17,3 +17,5 @@ EditorBuildSettings:
     path: Assets/BasicDemo/Scenes/Chameleon.unity
   - enabled: 1
     path: Assets/BasicDemo/Scenes/Camera.unity
+  - enabled: 1
+    path: Assets/BasicDemo/Scenes/Hit.unity

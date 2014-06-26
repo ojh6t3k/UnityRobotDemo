@@ -7,14 +7,13 @@ using UnityRobot;
 public class RobotConnect : MonoBehaviour 
 {
 	public RobotProxy _RobotProxy;
+	public Input_Correction _Input_Correction; // 인풋보정---------
 
 	private string	_statusMessage = "Ready";
 	private bool	_connecting = false; // Not use
 
 
 	// DF_GUI ============
-	public GameObject	_goIco_Connect;
-	public GameObject	_goIco_Disonnect;
 	public dfDropdown	_dfDDown;
 	public dfLabel		_dfLblMessage;
 	public dfButton		_dfBtn_Connect;
@@ -22,6 +21,7 @@ public class RobotConnect : MonoBehaviour
 	public GameObject	_goConnectUISet;
 	public dfLabel		_dfLblTitle;
 	public GameObject	_goPnlTitle;
+	public GameObject	_goBtn_InputDisplay;
 	// DF_GUI ============
 
 	public GameObject	_goGamePrefab;
@@ -37,39 +37,18 @@ public class RobotConnect : MonoBehaviour
 		_RobotProxy.OnDisconnected += OnDisconnected;
 		_RobotProxy.OnSearchCompleted += OnSearchCompleted;
 
-		Clear_Ports();
-		Search_Ports();
+		_RobotProxy.PortSearch();
 
-		_dfLblTitle.Text = _goGamePrefab.name;
+		if (_goGamePrefab != null)
+			_dfLblTitle.Text = _goGamePrefab.name;
 	}
 
-
-
-	public void Clear_Ports()
-	{
-		_dfDDown.Items = new string[0];
-		Search_Ports();
-	}
 
 
 
 	public void Search_Ports()
 	{
-		if (_dfDDown.Items.Length > 0)
-			return;
-
 		_RobotProxy.PortSearch();
-
-		if(_RobotProxy.portNames.Count > 0)
-		{
-			for(int i=0; i<_RobotProxy.portNames.Count; i++)
-			{
-				_dfDDown.AddItem(_RobotProxy.portNames[i]);
-			}
-
-			_dfDDown.SelectedIndex = 0;
-		}
-		_dfLblMessage.Text = "Ready"; // DFGUI
 	}
 
 
@@ -82,32 +61,8 @@ public class RobotConnect : MonoBehaviour
 	}
 
 
-	public void Disconnect_Port()
-	{
-		_RobotProxy.Disconnect();
-//		_dfLblMessage.Text = "Disconnected"; // DFGUI
-//		Change_ConnectIcon(false); // DFGUI
-//		Visible_ConnectUISet(true); // DFGUI
-//		Enable_ConnectUISet(true); // DFGUI
-//		_connecting = false;
-	}
 
-
-
-
-	void Change_ConnectIcon(bool p_Bool)
-	{
-		if (p_Bool) 
-		{
-			_goIco_Connect.SetActive(true); // DFGUI
-			_goIco_Disonnect.SetActive(false); // DFGUI
-		}
-		else
-		{
-			_goIco_Connect.SetActive(false); // DFGUI
-			_goIco_Disonnect.SetActive(true); // DFGUI
-		}
-	}
+	
 
 
 
@@ -140,10 +95,12 @@ public class RobotConnect : MonoBehaviour
 
 	void StartGame()
 	{
-		if (_goGamePrefab != null)
-			_goGamePrefab.BroadcastMessage("GamePlay", true);
-		else
-			Debug.LogWarning("No GamePrefab");
+		_Input_Correction.Invoke("StartInput", 0.1f);
+
+//		if (_goGamePrefab != null)
+//			_goGamePrefab.BroadcastMessage("GamePlay", true);
+//		else
+//			Debug.LogWarning("No GamePrefab");
 	}
 
 
@@ -161,27 +118,29 @@ public class RobotConnect : MonoBehaviour
 	void OnConnected(object sender, EventArgs e)
 	{
 		_dfLblMessage.Text = "Success to conncet"; // DFGUI
-		Change_ConnectIcon(true); // DFGUI
 		Visible_ConnectUISet(false); // DFGUI
 		_connecting = true;
 		Visible_GameTitle(false); // DFGUI
+		_goBtn_InputDisplay.SetActive(true); // DFGUI
 		StartGame(); // Start Game
 	}
 	
 	void OnConnectionFailed(object sender, EventArgs e)
 	{
 		_dfLblMessage.Text = "Failed to conncet"; // DFGUI
-		Change_ConnectIcon(false); // DFGUI
 		Enable_ConnectUISet(true); // DFGUI
+		_goBtn_InputDisplay.SetActive(false); // DFGUI
+		_Input_Correction._goInputPanel.SetActive(false); // 혹시 열려있을 인풋상황창을 닫는다------
 		_connecting = false;
 	}
 	
 	void OnDisconnected(object sender, EventArgs e)
 	{
 		_dfLblMessage.Text = "Disconnected"; // DFGUI
-		Change_ConnectIcon(false); // DFGUI
 		Visible_ConnectUISet(true); // DFGUI
 		Enable_ConnectUISet(true); // DFGUI
+		_goBtn_InputDisplay.SetActive(false); // DFGUI
+		_Input_Correction._goInputPanel.SetActive(false); // 혹시 열려있을 인풋상황창을 닫는다------
 		_connecting = false;
 		PauseGame(); // Pause Game
 
@@ -192,6 +151,24 @@ public class RobotConnect : MonoBehaviour
 	void OnSearchCompleted(object sender, EventArgs e)
 	{
 		_dfLblMessage.Text = "Search completed"; // DFGUI
+
+		_dfDDown.Items = new string[0];
+
+		if(_RobotProxy.portNames.Count > 0)
+		{
+			for(int i=0; i<_RobotProxy.portNames.Count; i++)
+			{
+				_dfDDown.AddItem(_RobotProxy.portNames[i]);
+			}
+			
+			_dfDDown.SelectedIndex = 0;
+		}
+		else if(_RobotProxy.portNames.Count == 0)
+		{
+			_dfDDown.AddItem("None");
+		}
+
+		_dfLblMessage.Text = "Ready"; // DFGUI
 	}
 }
 

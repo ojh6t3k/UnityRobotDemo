@@ -11,20 +11,12 @@ public class ControlGame4 : MonoBehaviour
 {
 	public bool _bGamePlay = false;
 
-	public ADCModule		_adcForward;
-	public ADCModule		_adcRight;
-	public ADCModule		_adcLeft;
-
-	float	_fadcForward = 0f;
-	float	_fadcRight = 0f;
-	float	_fadcLeft = 0f;
-
 	
 	public GameObject		_goCamera;
 	public GameObject		_goCameraCase;
 
-	public float			Sensitivity;
-	ArrayList _buffer = new ArrayList();
+
+	public Input_Correction		_input_Correction;
 
 
 	float	_fCamAng = 0f;
@@ -35,9 +27,10 @@ public class ControlGame4 : MonoBehaviour
 
 
 	// Start ----------------------------------------------------------
-//	void Start () 
-//	{
-//	}
+	void Start () 
+	{
+		_input_Correction.Set_State(0.1f, 6f); // 게임 고유의 셋팅 값---------
+	}
 
 
 
@@ -56,6 +49,9 @@ public class ControlGame4 : MonoBehaviour
 	// Game Stop(Pause) & Play ----------------------------------------
 	public void GamePlay(bool p_Bool)
 	{
+		if (_bGamePlay == p_Bool)
+			return;
+		
 		_bGamePlay = p_Bool;
 	}
 
@@ -67,49 +63,13 @@ public class ControlGame4 : MonoBehaviour
 	// Update_Camera ----------------------------------------------------
 	void Update_Camera()
 	{
-
-		_fadcForward = _adcForward.Value - (1024f - _adcForward.Value)*_adcForward.Value*0.001f ;
-		_fadcRight = _adcRight.Value - (1024f - _adcRight.Value)*_adcRight.Value*0.001f ;
-		_fadcLeft = _adcLeft.Value - (1024f - _adcLeft.Value)*_adcLeft.Value*0.001f ;
-
-
-
-		_fCamAng = -((1024f - _fadcRight) - (1024f - _fadcLeft)) / 1024f * 30f;
-
-		_fForWard = (1024f - _fadcForward) / 1024f * 20f;
-
-
-
-		Vector2 v2Value = new Vector2(_fCamAng, _fForWard);
-		Sensitivity = Mathf.Clamp(Sensitivity, 0f, 1f);
-		int n = (int)((1f - Sensitivity) * 100);
-		if(n > 0)
-		{
-			if(_buffer.Count >= n && n > 0)
-				_buffer.RemoveAt(0);
-			_buffer.Add(new Vector2(_fCamAng, _fForWard));
-			
-			if(_buffer.Count > 0)
-			{
-				v2Value = Vector4.zero;
-				for(int i=0; i<_buffer.Count; i++)
-					v2Value += (Vector2)_buffer[i];
-				
-				v2Value /= (float)_buffer.Count;
-			}
-		}
-		_fCamAng = v2Value.x;
-		_fForWard = v2Value.y;
-
-
-
-
+		_fCamAng = -(_input_Correction._fUse_A_R - _input_Correction._fUse_A_L) * 30f;
+		_fForWard = _input_Correction._fUse_A_U * 20f;
 
 		if (_fCamAng > 0)
 			_fSign = 1f;
 		else
 			_fSign = -1f;
-
 
 
 

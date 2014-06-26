@@ -62,7 +62,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .125976562
-      y: .9140625
+      y: .881835938
       width: .125
       height: .03125
     border:
@@ -78,8 +78,8 @@ MonoBehaviour:
   - name: 045_bar_head_disable
     region:
       serializedVersion: 2
-      x: 0
-      y: .9453125
+      x: .189453125
+      y: .9140625
       width: .125
       height: .03125
     border:
@@ -95,8 +95,8 @@ MonoBehaviour:
   - name: 045_bar_head_over
     region:
       serializedVersion: 2
-      x: .125976562
-      y: .881835938
+      x: 0
+      y: .9453125
       width: .125
       height: .03125
     border:
@@ -112,7 +112,7 @@ MonoBehaviour:
   - name: 045_bar_head_press
     region:
       serializedVersion: 2
-      x: .125976562
+      x: .189453125
       y: .946289062
       width: .125
       height: .03125
@@ -129,8 +129,8 @@ MonoBehaviour:
   - name: all-calls-icon
     region:
       serializedVersion: 2
-      x: 0
-      y: .125976562
+      x: .377929688
+      y: 0
       width: .125
       height: .125
     border:
@@ -143,10 +143,180 @@ MonoBehaviour:
     textureGUID: 64d0640c34f57bf4e9bcf54700837665
     deleted: 0
     texture: {fileID: 0}
-  - name: check-icon
+  - name: bar
+    region:
+      serializedVersion: 2
+      x: .887695312
+      y: .0322265625
+      width: .001953125
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 4, y: 128}
+    textureGUID: c4670335482b0bb499555bab31febd65
+    deleted: 0
+    texture: {fileID: 0}
+  - name: bar 1
+    region:
+      serializedVersion: 2
+      x: .881835938
+      y: .0322265625
+      width: .001953125
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 4, y: 128}
+    textureGUID: 4eef433f3376af54dbdd34754c9a0f14
+    deleted: 0
+    texture: {fileID: 0}
+  - name: bar_
+    region:
+      serializedVersion: 2
+      x: .0673828125
+      y: .977539062
+      width: .0078125
+      height: .001953125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 16, y: 4}
+    textureGUID: 56ce5e5500e1b4641a1270cedfe8ba4f
+    deleted: 0
+    texture: {fileID: 0}
+  - name: bar_old
+    region:
+      serializedVersion: 2
+      x: .884765625
+      y: .0322265625
+      width: .001953125
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 4, y: 128}
+    textureGUID: 744f9817b9583af42b875c41f16ef880
+    deleted: 0
+    texture: {fileID: 0}
+  - name: BarBox
+    region:
+      serializedVersion: 2
+      x: .9140625
+      y: 0
+      width: .0078125
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 16, y: 128}
+    textureGUID: 513fbe4bd7f8ec2448a9e287c337b318
+    deleted: 0
+    texture: {fileID: 0}
+  - name: bg
+    region:
+      serializedVersion: 2
+      x: .125976562
+      y: .9140625
+      width: .0625
+      height: .0625
+    border:
+      m_Left: 10
+      m_Right: 10
+      m_Top: 10
+      m_Bottom: 10
+    rotated: 0
+    sizeInPixels: {x: 128, y: 128}
+    textureGUID: 8de0a142ef077c94ebe531db22bb7fc9
+    deleted: 0
+    texture: {fileID: 0}
+  - name: btnLOff
+    region:
+      serializedVersion: 2
+      x: .033203125
+      y: .977539062
+      width: .015625
+      height: .015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 32, y: 32}
+    textureGUID: 1ffa0ae0667fb254093000a0fc9adbe8
+    deleted: 0
+    texture: {fileID: 0}
+  - name: btnLOn
     region:
       serializedVersion: 2
       x: 0
+      y: .977539062
+      width: .015625
+      height: .015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 32, y: 32}
+    textureGUID: 5369dbcfaeae2904f8e3393ca6931e8c
+    deleted: 0
+    texture: {fileID: 0}
+  - name: btnSOff
+    region:
+      serializedVersion: 2
+      x: .0498046875
+      y: .977539062
+      width: .0078125
+      height: .0078125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 16, y: 16}
+    textureGUID: 3e655b899cb0c8a499136c59bbce0c81
+    deleted: 0
+    texture: {fileID: 0}
+  - name: btnSOn
+    region:
+      serializedVersion: 2
+      x: .05859375
+      y: .977539062
+      width: .0078125
+      height: .0078125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 16, y: 16}
+    textureGUID: fdf810dfaecbd4940a0f33b63a4033bc
+    deleted: 0
+    texture: {fileID: 0}
+  - name: check-icon
+    region:
+      serializedVersion: 2
+      x: .755859375
       y: 0
       width: .125
       height: .125
@@ -163,8 +333,8 @@ MonoBehaviour:
   - name: connect-icon
     region:
       serializedVersion: 2
-      x: .125976562
-      y: .251953125
+      x: 0
+      y: .755859375
       width: .125
       height: .125
     border:
@@ -181,7 +351,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .251953125
-      y: .251953125
+      y: .125976562
       width: .125
       height: .125
     border:
@@ -194,11 +364,45 @@ MonoBehaviour:
     textureGUID: d74ca57e5709a8049b15dee79c5e6282
     deleted: 0
     texture: {fileID: 0}
+  - name: Dial
+    region:
+      serializedVersion: 2
+      x: .0166015625
+      y: .977539062
+      width: .015625
+      height: .015625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 32, y: 32}
+    textureGUID: 92cd33d148ca7714482255e307636bc2
+    deleted: 0
+    texture: {fileID: 0}
+  - name: DialCircle
+    region:
+      serializedVersion: 2
+      x: .881835938
+      y: 0
+      width: .03125
+      height: .03125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 64, y: 64}
+    textureGUID: da419a3723e737e4d84800b022317cca
+    deleted: 0
+    texture: {fileID: 0}
   - name: dialled-nimbers-icon
     region:
       serializedVersion: 2
-      x: 0
-      y: .755859375
+      x: .125976562
+      y: .377929688
       width: .125
       height: .125
     border:
@@ -214,8 +418,8 @@ MonoBehaviour:
   - name: dialled-nimbers-icon 1
     region:
       serializedVersion: 2
-      x: .755859375
-      y: 0
+      x: 0
+      y: .629882812
       width: .125
       height: .125
     border:
@@ -232,7 +436,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .125976562
-      y: .50390625
+      y: .629882812
       width: .125
       height: .125
     border:
@@ -248,8 +452,8 @@ MonoBehaviour:
   - name: dialled-nimbers-icon_press
     region:
       serializedVersion: 2
-      x: .629882812
-      y: 0
+      x: .755859375
+      y: .125976562
       width: .125
       height: .125
     border:
@@ -265,8 +469,8 @@ MonoBehaviour:
   - name: info-icon
     region:
       serializedVersion: 2
-      x: .50390625
-      y: .125976562
+      x: 0
+      y: .377929688
       width: .125
       height: .125
     border:
@@ -283,7 +487,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .125976562
-      y: .125976562
+      y: 0
       width: .125
       height: .125
     border:
@@ -299,7 +503,7 @@ MonoBehaviour:
   - name: move-icon
     region:
       serializedVersion: 2
-      x: .377929688
+      x: .50390625
       y: 0
       width: .125
       height: .125
@@ -316,8 +520,8 @@ MonoBehaviour:
   - name: mp3tag-icon
     region:
       serializedVersion: 2
-      x: 0
-      y: .377929688
+      x: .125976562
+      y: .50390625
       width: .125
       height: .125
     border:
@@ -333,8 +537,8 @@ MonoBehaviour:
   - name: no-icon
     region:
       serializedVersion: 2
-      x: .251953125
-      y: 0
+      x: .125976562
+      y: .251953125
       width: .125
       height: .125
     border:
@@ -350,8 +554,8 @@ MonoBehaviour:
   - name: received-calls-icon
     region:
       serializedVersion: 2
-      x: .125976562
-      y: .755859375
+      x: 0
+      y: .251953125
       width: .125
       height: .125
     border:
@@ -368,7 +572,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: 0
-      y: .50390625
+      y: .125976562
       width: .125
       height: .125
     border:
@@ -384,8 +588,8 @@ MonoBehaviour:
   - name: search-icon2_disable
     region:
       serializedVersion: 2
-      x: .50390625
-      y: 0
+      x: .125976562
+      y: .755859375
       width: .125
       height: .125
     border:
@@ -401,8 +605,8 @@ MonoBehaviour:
   - name: search-icon2_over
     region:
       serializedVersion: 2
-      x: 0
-      y: .629882812
+      x: .629882812
+      y: .125976562
       width: .125
       height: .125
     border:
@@ -419,7 +623,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .125976562
-      y: .377929688
+      y: .125976562
       width: .125
       height: .125
     border:
@@ -436,7 +640,7 @@ MonoBehaviour:
     region:
       serializedVersion: 2
       x: .251953125
-      y: .125976562
+      y: .251953125
       width: .125
       height: .125
     border:
@@ -452,8 +656,8 @@ MonoBehaviour:
   - name: start-icon
     region:
       serializedVersion: 2
-      x: .125976562
-      y: .629882812
+      x: .629882812
+      y: 0
       width: .125
       height: .125
     border:
@@ -469,7 +673,7 @@ MonoBehaviour:
   - name: sync-icon
     region:
       serializedVersion: 2
-      x: .377929688
+      x: .50390625
       y: .125976562
       width: .125
       height: .125
@@ -486,7 +690,7 @@ MonoBehaviour:
   - name: theme-icon
     region:
       serializedVersion: 2
-      x: .125976562
+      x: 0
       y: 0
       width: .125
       height: .125
@@ -503,7 +707,7 @@ MonoBehaviour:
   - name: tone-icon
     region:
       serializedVersion: 2
-      x: .755859375
+      x: .377929688
       y: .125976562
       width: .125
       height: .125
@@ -520,8 +724,8 @@ MonoBehaviour:
   - name: usb-icon
     region:
       serializedVersion: 2
-      x: .629882812
-      y: .125976562
+      x: 0
+      y: .50390625
       width: .125
       height: .125
     border:
@@ -537,8 +741,8 @@ MonoBehaviour:
   - name: wtf-icon
     region:
       serializedVersion: 2
-      x: 0
-      y: .251953125
+      x: .251953125
+      y: 0
       width: .125
       height: .125
     border:
