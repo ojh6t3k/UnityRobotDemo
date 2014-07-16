@@ -10,8 +10,9 @@ public class GameUI : MonoBehaviour
 
 	bool		_IsCount = false;
 
-	float		_fTime = 30f;
-	int			_nScore = 0;
+	public float		_fMaxTime = 30f;
+	float				_fTime = 0f;
+	int					_nScore = 0;
 
 
 
@@ -24,7 +25,10 @@ public class GameUI : MonoBehaviour
 			return;
 
 		_fTime = _fTime - Time.deltaTime;
-		_dfl_Time.Text = string.Format("{0:f0}", _fTime);
+		if (_fTime <= 30f)
+			_dfl_Time.Text = string.Format("{0:f0}", _fTime);
+		else 
+			_dfl_Time.Text = "";
 
 		if (_fTime < 0)
 		{
@@ -54,7 +58,7 @@ public class GameUI : MonoBehaviour
 	public void StartCounter()
 	{
 		_IsCount = true;
-		_fTime = 30f;
+		_fTime = _fMaxTime;
 		_nScore = 0;
 		_dfl_Score.Text = _nScore.ToString();
 	}

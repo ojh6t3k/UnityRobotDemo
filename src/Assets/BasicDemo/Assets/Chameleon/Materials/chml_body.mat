@@ -43,6 +43,13 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _Detail
         second:
           m_Texture: {fileID: 0}
@@ -71,13 +78,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Illum
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Cube
         second:
           m_Texture: {fileID: 0}
@@ -88,6 +88,14 @@ Material:
         first:
           name: _Shininess
         second: .078125
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
+      data:
+        first:
+          name: _InvFade
+        second: 1
       data:
         first:
           name: _Gloss
@@ -104,19 +112,11 @@ Material:
         first:
           name: _FresnelStrength
         second: .5
-      data:
-        first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .953125, g: .76171875, b: .533203125, a: 1}
+        second: {r: .0695557892, g: .00482185325, b: .0211195182, a: 1}
       data:
         first:
           name: _Emission
@@ -125,6 +125,10 @@ Material:
         first:
           name: _SpecColor
         second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
           name: _Colour
@@ -137,10 +141,6 @@ Material:
         first:
           name: _FresnelTint
         second: {r: .5, g: .5, b: .5, a: 1}
-      data:
-        first:
-          name: _TintColor
-        second: {r: .5, g: .5, b: .5, a: .5}
       data:
         first:
           name: _ReflectColor
