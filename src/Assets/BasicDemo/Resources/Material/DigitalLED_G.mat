@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DigitalLED
+  m_Name: DigitalLED_G
   m_Shader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -40,7 +40,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .280438989, g: .516146719, b: .977941155, a: 1}
+        second: {r: .396116257, g: .985294104, b: .347750843, a: 1}
       data:
         first:
           name: _SpecColor
