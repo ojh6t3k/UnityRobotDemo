@@ -22,13 +22,15 @@ public class ControlGame6 : MonoBehaviour
 	public Input_Correction		_input_Correction;
 	public GameUI				_GameUI;
 	
-	private static string tempPath = Application.dataPath;
+	string tempPath;
 	public MidiFile				_midiFile;
 
 	[DllImport("winmm.dll")]
 	private static extern int mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr handle);
 
 	bool		_bIsPlay = false;
+	
+	public bool		_bIsEasy = true;
 
 
 	List<MidiNote> _lstMidiNote = new List<MidiNote>();
@@ -72,9 +74,14 @@ public class ControlGame6 : MonoBehaviour
 	// Start ----------------------------------------------------------
 	void Start () 
 	{
+		tempPath = Application.dataPath;
+
 		_midiFile = new MidiFile(tempPath + "/BasicDemo/Resources/Midi/snowfalls.mid");
 
 		_lstMidiNote = _midiFile.Tracks[0].Notes;
+
+		_goTrack_L.transform.localPosition = new Vector3(-1.06f, 30f, 0f);
+		_goTrack_R.transform.localPosition = new Vector3(1.06f, 30f, 0f);
 
 		_input_Correction.Set_State(0.9f, 8f); // 게임 고유의 셋팅 값---------
 	}
@@ -121,15 +128,27 @@ public class ControlGame6 : MonoBehaviour
 		}
 		else if (_input_Correction._nUse_D_R == 1)
 		{
-			StopMidi();
+			//StopMidi();
+			_bIsEasy = !_bIsEasy;
+
+			if (_bIsEasy)
+			{
+				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 30f, 0f);
+				_goTrack_R.transform.localPosition = new Vector3(1.06f, 30f, 0f);
+			}
+			else
+			{
+				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 0f, 0f);
+				_goTrack_R.transform.localPosition = new Vector3(1.06f, 0f, 0f);
+			}
 		}
 
-		if ((_input_Correction._fUse_A_FR > 0.9f) && (_input_Correction._fUse_A_FL < 0.9f))
+		if ((_input_Correction._fUse_A_FR > 0.9f) && (_input_Correction._fUse_A_FL < 0.9f) && (!_bIsEasy))
 		{
 			_v3CurCamPos = _v3CamPosL;
 			_nTrackNum = -1;
 		}
-		else if ((_input_Correction._fUse_A_FR < 0.9f) && (_input_Correction._fUse_A_FL > 0.9f))
+		else if ((_input_Correction._fUse_A_FR < 0.9f) && (_input_Correction._fUse_A_FL > 0.9f) && (!_bIsEasy))
 		{
 			_v3CurCamPos = _v3CamPosR;
 			_nTrackNum = 1;
@@ -357,24 +376,31 @@ public class ControlGame6 : MonoBehaviour
 		{
 		case 48:
 			InstantiateNote(-1, 0.075f);
+			InstantiateNote(-10, 0.075f);
 			break;
 		case 50:
 			InstantiateNote(-1, 0.225f);
+			InstantiateNote(-10, 0.225f);
 			break;
 		case 52:
 			InstantiateNote(-1, 0.375f);
+			InstantiateNote(-10, 0.375f);
 			break;
 		case 53:
 			InstantiateNote(-1, 0.525f);
+			InstantiateNote(-10, 0.525f);
 			break;
 		case 55:
 			InstantiateNote(-1, 0.675f);
+			InstantiateNote(-10, 0.675f);
 			break;
 		case 57:
 			InstantiateNote(-1, 0.825f);
+			InstantiateNote(-10, 0.825f);
 			break;
 		case 59:
 			InstantiateNote(-1, 0.975f);
+			InstantiateNote(-10, 0.975f);
 			break;
 			
 			
@@ -403,24 +429,31 @@ public class ControlGame6 : MonoBehaviour
 
 		case 72:
 			InstantiateNote(1, 0.075f);
+			InstantiateNote(10, 0.075f);
 			break;
 		case 74:
 			InstantiateNote(1, 0.225f);
+			InstantiateNote(10, 0.225f);
 			break;
 		case 76:
 			InstantiateNote(1, 0.375f);
+			InstantiateNote(10, 0.375f);
 			break;
 		case 77:
 			InstantiateNote(1, 0.525f);
+			InstantiateNote(10, 0.525f);
 			break;
 		case 79:
 			InstantiateNote(1, 0.675f);
+			InstantiateNote(10, 0.675f);
 			break;
 		case 81:
 			InstantiateNote(1, 0.825f);
+			InstantiateNote(10, 0.825f);
 			break;
 		case 83:
 			InstantiateNote(1, 0.975f);
+			InstantiateNote(10, 0.975f);
 			break;
 
 
@@ -442,23 +475,51 @@ public class ControlGame6 : MonoBehaviour
 		case -1:
 			note = Instantiate(_goNoteRed) as GameObject;
 			note.transform.parent = _goTrack_L.transform;
-			note.transform.localPosition = new Vector3(p_PositionX, 0.1f, 20f);
+			note.transform.localPosition = new Vector3(p_PositionX, 30f, 20f);
 			NoteTranslate scr = note.GetComponent<NoteTranslate>();
+			scr._ControlGame6 = this;
 			scr._GameUI = _GameUI;
+			scr._bIsSide = true;
 			break;
 		case 0:
 			note = Instantiate(_goNoteGreen) as GameObject;
 			note.transform.parent = _goTrack_M.transform;
 			note.transform.localPosition = new Vector3(p_PositionX, 0.1f, 20f);
 			scr = note.GetComponent<NoteTranslate>();
+			scr._ControlGame6 = this;
 			scr._GameUI = _GameUI;
 			break;
 		case 1:
 			note = Instantiate(_goNoteBlue) as GameObject;
 			note.transform.parent = _goTrack_R.transform;
-			note.transform.localPosition = new Vector3(p_PositionX, 0.1f, 20f);
+			note.transform.localPosition = new Vector3(p_PositionX, 30f, 20f);
 			scr = note.GetComponent<NoteTranslate>();
+			scr._ControlGame6 = this;
 			scr._GameUI = _GameUI;
+			scr._bIsSide = true;
+			break;
+
+		case -10:
+			note = Instantiate(_goNoteRed) as GameObject;
+			note.transform.parent = _goTrack_M.transform;
+			note.transform.localPosition = new Vector3(p_PositionX, 30f, 20f);
+			scr = note.GetComponent<NoteTranslate>();
+			scr._ControlGame6 = this;
+			scr._GameUI = _GameUI;
+			scr._bIsClone = true;
+			break;
+
+		case 10:
+			note = Instantiate(_goNoteBlue) as GameObject;
+			note.transform.parent = _goTrack_M.transform;
+			note.transform.localPosition = new Vector3(p_PositionX, 30f, 20f);
+			scr = note.GetComponent<NoteTranslate>();
+			scr._ControlGame6 = this;
+			scr._GameUI = _GameUI;
+			scr._bIsClone = true;
+			break;
+
+		default:
 			break;
 		}
 	}

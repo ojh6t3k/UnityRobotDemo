@@ -1779,6 +1779,7 @@ MonoBehaviour:
   _Input_Correction: {fileID: 2009355130}
   _dfl_Time: {fileID: 745412172}
   _dfl_Score: {fileID: 145454410}
+  _fMaxTime: 30
 --- !u!65 &217516195
 BoxCollider:
   m_ObjectHideFlags: 2

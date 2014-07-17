@@ -48,7 +48,7 @@ public class ControlGame2 : MonoBehaviour
 
 		Update_Output_Ballence();
 		Update_Controll_Fighter();
-
+		Update_Check_Button();
 	}
 
 
@@ -71,6 +71,23 @@ public class ControlGame2 : MonoBehaviour
 			_goFighter.SetActive(p_Bool);
 		}
 	}
+
+
+
+
+	// 버튼 체크------------------------
+	void Update_Check_Button()
+	{
+		if (_input_Correction._nUse_D_L == 1)
+		{
+			Reset_Game();
+		}
+
+	}
+
+
+
+
 
 
 

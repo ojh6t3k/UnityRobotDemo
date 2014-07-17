@@ -7039,6 +7039,7 @@ MonoBehaviour:
   _bGamePlay: 0
   _input_Correction: {fileID: 1859433591}
   _GameUI: {fileID: 853363076}
+  _bIsEasy: 0
   _trCamera: {fileID: 644637152}
   _goNoteRed: {fileID: 100000, guid: 2e2ce707e12e11d488cd44740344d233, type: 2}
   _goNoteGreen: {fileID: 100000, guid: 132b533a4ac628045bf51b19b236ecea, type: 2}
@@ -8285,6 +8286,10 @@ Prefab:
     - target: {fileID: 400048, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}

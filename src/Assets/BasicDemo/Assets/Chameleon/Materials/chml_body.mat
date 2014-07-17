@@ -98,15 +98,15 @@ Material:
         second: 1
       data:
         first:
+          name: _Fresnel
+        second: 1
+      data:
+        first:
           name: _Gloss
         second: .680999994
       data:
         first:
           name: _ReflectionStrength
-        second: 1
-      data:
-        first:
-          name: _Fresnel
         second: 1
       data:
         first:
@@ -116,7 +116,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .0695557892, g: .00482185325, b: .0211195182, a: 1}
+        second: {r: .025440529, g: .0363398716, b: .0304845795, a: 1}
       data:
         first:
           name: _Emission

@@ -14403,6 +14403,7 @@ MonoBehaviour:
   _Input_Correction: {fileID: 671535167}
   _dfl_Time: {fileID: 769238465}
   _dfl_Score: {fileID: 859975500}
+  _fMaxTime: 30
 --- !u!1 &1970024891
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,17 +68,13 @@ public class ControlGame1 : MonoBehaviour
 		if (_bGamePlay == p_Bool)
 			return;
 
-		if (p_Bool)
-		{
-			_bGamePlay = p_Bool;
-			//_goBall.SetActive(p_Bool);
+
+		_bGamePlay = p_Bool;
+		
+		if (_bGamePlay)
 			Reset_Game();
-		}
 		else
-		{
-			_bGamePlay = p_Bool;
 			_goBall.SetActive(p_Bool);
-		}
 	}
 
 
@@ -117,9 +113,14 @@ public class ControlGame1 : MonoBehaviour
 
 
 
-	// 우버튼 체크------------------------
+	// 버튼 체크------------------------
 	void Update_Check_Button()
 	{
+		if (_input_Correction._nUse_D_L == 1)
+		{
+			Reset_Game();
+		}
+
 		if (_input_Correction._nUse_D_R == 1)
 		{
 			_bIsActiveMaze = !_bIsActiveMaze;
