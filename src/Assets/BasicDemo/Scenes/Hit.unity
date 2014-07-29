@@ -3822,6 +3822,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[7]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
   m_RootGameObject: {fileID: 929769727}
@@ -5058,6 +5062,7 @@ MonoBehaviour:
   _Input_Correction: {fileID: 1859433591}
   _dfl_Time: {fileID: 954973332}
   _dfl_Score: {fileID: 746488268}
+  _fMaxTime: 30
 --- !u!65 &853363077
 BoxCollider:
   m_ObjectHideFlags: 2

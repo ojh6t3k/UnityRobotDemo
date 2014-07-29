@@ -32,7 +32,7 @@ public class ControlGame5 : MonoBehaviour
 	void Start () 
 	{
 		Reset();
-		_input_Correction.Set_State(0.9f, 8f); // 게임 고유의 셋팅 값---------
+		_input_Correction.Set_State(0.5f, 2f); // 게임 고유의 셋팅 값---------
 	}
 
 
@@ -72,7 +72,7 @@ public class ControlGame5 : MonoBehaviour
 		if (_bIsHit)
 			return;
 
-		if (_input_Correction._fUse_A_F_Speed > 5f)
+		if (_input_Correction._fUse_A_F_Speed > 20f)
 		{
 			_bIsHit = true;
 			_ani.Stop("wound");
@@ -80,7 +80,7 @@ public class ControlGame5 : MonoBehaviour
 			_GameUI.AddScore((int)_input_Correction._fUse_A_F_Speed);
 			Invoke("Reset" , 0.5f);
 		}
-		else if (_input_Correction._fUse_A_FL_Speed > 5f)
+		else if (_input_Correction._fUse_A_FL_Speed > 20f)
 		{
 			_bIsHit = true;
 			_ani.Stop("wound");
@@ -90,7 +90,7 @@ public class ControlGame5 : MonoBehaviour
 			_GameUI.AddScore((int)_input_Correction._fUse_A_FL_Speed);
 			Invoke("Reset" , 0.5f);
 		}
-		else if (_input_Correction._fUse_A_FR_Speed > 5f)
+		else if (_input_Correction._fUse_A_FR_Speed > 20f)
 		{
 			_bIsHit = true;
 			_ani.Stop("wound");

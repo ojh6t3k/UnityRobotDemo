@@ -3644,7 +3644,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 2300000, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
       propertyPath: m_Materials.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3778,6 +3778,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400254, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8f05c7c34b566f4f90d4a06a3712e84, type: 2}
   m_RootGameObject: {fileID: 929769727}
@@ -3865,7 +3869,7 @@ MonoBehaviour:
   autoSize: 0
   autoHeight: 0
   wordWrap: 0
-  text: 0
+  text: 
   bottomColor:
     serializedVersion: 2
     rgba: 4280690431
@@ -5328,7 +5332,6 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityRobot;
-using System.Runtime.InteropServices;
+//using System.Runtime.InteropServices;
 using System.Text;
 
 
@@ -25,8 +25,10 @@ public class ControlGame6 : MonoBehaviour
 	string tempPath;
 	public MidiFile				_midiFile;
 
-	[DllImport("winmm.dll")]
-	private static extern int mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr handle);
+	public GameObject			_goBGM;
+
+//	[DllImport("winmm.dll")]
+//	private static extern int mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr handle);
 
 	bool		_bIsPlay = false;
 	
@@ -114,7 +116,7 @@ public class ControlGame6 : MonoBehaviour
 		_bGamePlay = p_Bool;
 
 		if (_bGamePlay)
-			PlayMidi();
+			PlayBGM();
 	}
 
 
@@ -124,24 +126,24 @@ public class ControlGame6 : MonoBehaviour
 	{
 		if (_input_Correction._nUse_D_L == 1)
 		{
-			PlayMidi();
+			PlayBGM();
 		}
-		else if (_input_Correction._nUse_D_R == 1)
-		{
-			//StopMidi();
-			_bIsEasy = !_bIsEasy;
-
-			if (_bIsEasy)
-			{
-				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 30f, 0f);
-				_goTrack_R.transform.localPosition = new Vector3(1.06f, 30f, 0f);
-			}
-			else
-			{
-				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 0f, 0f);
-				_goTrack_R.transform.localPosition = new Vector3(1.06f, 0f, 0f);
-			}
-		}
+//		else if (_input_Correction._nUse_D_R == 1)
+//		{
+//			//StopMidi();
+//			_bIsEasy = !_bIsEasy;
+//
+//			if (_bIsEasy)
+//			{
+//				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 30f, 0f);
+//				_goTrack_R.transform.localPosition = new Vector3(1.06f, 30f, 0f);
+//			}
+//			else
+//			{
+//				_goTrack_L.transform.localPosition = new Vector3(-1.06f, 0f, 0f);
+//				_goTrack_R.transform.localPosition = new Vector3(1.06f, 0f, 0f);
+//			}
+//		}
 
 		if ((_input_Correction._fUse_A_FR > 0.9f) && (_input_Correction._fUse_A_FL < 0.9f) && (!_bIsEasy))
 		{
@@ -285,40 +287,44 @@ public class ControlGame6 : MonoBehaviour
 
 
 	// PlayMidi -------------------------------------------------------------------------------------
-	public void PlayMidi()
+	public void PlayBGM()
 	{
 		_bIsPlay = true;
 
 		_fMusicTime = 0f;
 		_nCurNoteCounter = 0;
 
-		CancelInvoke("DelayPlayMidi");
-		Invoke("DelayPlayMidi", 3.5f);
+		CancelInvoke("DelayPlayBGM");
+		Invoke("DelayPlayBGM", 3.8f);
 	}
 
 
-	void DelayPlayMidi()
+	void DelayPlayBGM()
 	{
-		string commandString = "open " + tempPath + "/BasicDemo/Resources/Midi/snowfalls.mid" + " type SEQUENCER alias MIDI";
-		mciSendString(commandString, null, 0, IntPtr.Zero);
-		mciSendString("seek MIDI to 0", null, 0, IntPtr.Zero);
-		mciSendString("play MIDI", null, 0, IntPtr.Zero);
+		_goBGM.audio.Play();
+//		string commandString = "open " + tempPath + "/BasicDemo/Resources/Midi/snowfalls.mid" + " type SEQUENCER alias MIDI";
+//		mciSendString(commandString, null, 0, IntPtr.Zero);
+//		mciSendString("seek MIDI to 0", null, 0, IntPtr.Zero);
+//		mciSendString("play MIDI", null, 0, IntPtr.Zero);
 	}
 
 
 
 	// StopMidi -------------------------------------------------------------------------------------
-	public void StopMidi()
+	public void StopBGM()
 	{
 		if(_bIsPlay)
-			mciSendString("stop MIDI", null, 0, IntPtr.Zero);
-		
-		mciSendString("close MIDI", null, 0, IntPtr.Zero);
+		{
+			_goBGM.audio.Stop();
+			//mciSendString("stop MIDI", null, 0, IntPtr.Zero);
+		}
+
+		//mciSendString("close MIDI", null, 0, IntPtr.Zero);
 
 		_fMusicTime = 0f;
 		_nCurNoteCounter = 0;
 
-		CancelInvoke("DelayPlayMidi");
+		CancelInvoke("DelayPlayBGM");
 
 		_bGamePlay = false;
 	}
@@ -362,7 +368,7 @@ public class ControlGame6 : MonoBehaviour
 	// 종료시----------------------------------------------------------------
 	void OnApplicationQuit() 
 	{
-		StopMidi();
+		StopBGM();
 	}
 
 
