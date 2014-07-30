@@ -824,16 +824,26 @@ public class MidiFile
  * - All the tracks in the song which contain notes. 
  * - The number, starttime, and duration of each note.
  */
-    public MidiFile(string filename)
+	public MidiFile(string filename)
+	{
+		this.filename = filename;
+		Load(new MidiFileReader(filename));
+
+	}
+
+	public MidiFile(byte[] data)
+	{
+		Load(new MidiFileReader(data));
+	}
+
+	public void Load(MidiFileReader file)
     {
         string id;
         int len;
-
-        this.filename = filename;
+        
         tracks = new List<MidiTrack>();
         trackPerChannel = false;
-
-        MidiFileReader file = new MidiFileReader(filename);
+		        
         id = file.ReadAscii(4);
         if (id != "MThd")
         {
