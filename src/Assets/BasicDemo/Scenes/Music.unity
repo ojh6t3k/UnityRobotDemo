@@ -7001,6 +7001,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 920998527}
   - 114: {fileID: 920998528}
+  - 114: {fileID: 920998530}
+  - 114: {fileID: 920998529}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -7038,6 +7040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bGamePlay: 0
+  _MidiPlayer: {fileID: 920998530}
+  _ToneModule: {fileID: 920998529}
   _input_Correction: {fileID: 1859433591}
   _GameUI: {fileID: 853363076}
   _goBGM: {fileID: 1631019078}
@@ -7076,6 +7080,32 @@ MonoBehaviour:
   _goHitSet_L: {fileID: 1586136925}
   _goHitSet_M: {fileID: 18061094}
   _goHitSet_R: {fileID: 1979385891}
+--- !u!114 &920998529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920998526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a7b39be56fdc1044be6e9ddf1727610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+--- !u!114 &920998530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920998526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a93bed531c40184cbea79b9353e4fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  midi: {fileID: 4900000, guid: de8019e53f530ba46b89a9554747875a, type: 3}
+  tone: {fileID: 920998529}
+  tracks: []
 --- !u!1 &929769727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8297,6 +8327,14 @@ Prefab:
       propertyPath: _goBGM
       value: 
       objectReference: {fileID: 1631019078}
+    - target: {fileID: 11400000, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}
+      propertyPath: _MidiPlayer
+      value: 
+      objectReference: {fileID: 920998530}
+    - target: {fileID: 11400000, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}
+      propertyPath: _ToneModule
+      value: 
+      objectReference: {fileID: 920998529}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c6b1c8e228eb3c4f8ee9abb389e6a59, type: 2}
   m_RootGameObject: {fileID: 920998526}

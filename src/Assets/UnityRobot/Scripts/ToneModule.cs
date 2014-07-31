@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 namespace UnityRobot
 {
@@ -99,6 +100,8 @@ namespace UnityRobot
 
 	public class ToneModule : ModuleProxy
 	{
+		public EventHandler OnNoteChanged;
+
 		private ToneNote _note;
 
 		void Awake()
@@ -147,6 +150,8 @@ namespace UnityRobot
 				{
 					_note = value;
 					canUpdate = true;
+					if(OnNoteChanged != null)
+						OnNoteChanged(this, null);
 				}
 			}
 		}

@@ -19,6 +19,9 @@ public class ControlGame6 : MonoBehaviour
 {
 	public bool _bGamePlay = false;
 
+	public MidiPlayer		_MidiPlayer;
+	public ToneModule		_ToneModule;
+
 	public Input_Correction		_input_Correction;
 	public GameUI				_GameUI;
 	
@@ -26,6 +29,7 @@ public class ControlGame6 : MonoBehaviour
 	public MidiFile				_midiFile;
 
 	public GameObject			_goBGM;
+
 
 //	[DllImport("winmm.dll")]
 //	private static extern int mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr handle);
@@ -78,14 +82,16 @@ public class ControlGame6 : MonoBehaviour
 	{
 		tempPath = Application.dataPath;
 
-		_midiFile = new MidiFile(tempPath + "/BasicDemo/Resources/Midi/snowfalls.mid");
+		//_midiFile = new MidiFile(tempPath + "/BasicDemo/Resources/Midi/snowfalls.mid");
 
-		_lstMidiNote = _midiFile.Tracks[0].Notes;
+		//_lstMidiNote = _midiFile.Tracks[0].Notes;
 
 		_goTrack_L.transform.localPosition = new Vector3(-1.06f, 30f, 0f);
 		_goTrack_R.transform.localPosition = new Vector3(1.06f, 30f, 0f);
 
 		_input_Correction.Set_State(0.9f, 8f); // 게임 고유의 셋팅 값---------
+
+		_ToneModule.OnNoteChanged += OnNoteChanged;
 	}
 
 
@@ -99,7 +105,7 @@ public class ControlGame6 : MonoBehaviour
 
 		Update_Check_Button();
 		Update_CheckMusicTime();
-		Update_CheckNoteTiming();
+		//Update_CheckNoteTiming();
 		Update_MoveCamera();
 	}
 
@@ -280,7 +286,97 @@ public class ControlGame6 : MonoBehaviour
 
 	}
 
-
+	void OnNoteChanged(object sender, EventArgs arg)
+	{
+		switch(_ToneModule.Note)
+		{
+		case ToneNote.C4:
+			InstantiateNote(-1, 0.075f);
+			InstantiateNote(-10, 0.075f);
+			break;
+		case ToneNote.D4:
+			InstantiateNote(-1, 0.225f);
+			InstantiateNote(-10, 0.225f);
+			break;
+		case ToneNote.E4:
+			InstantiateNote(-1, 0.375f);
+			InstantiateNote(-10, 0.375f);
+			break;
+		case ToneNote.F4:
+			InstantiateNote(-1, 0.525f);
+			InstantiateNote(-10, 0.525f);
+			break;
+		case ToneNote.G4:
+			InstantiateNote(-1, 0.675f);
+			InstantiateNote(-10, 0.675f);
+			break;
+		case ToneNote.A4:
+			InstantiateNote(-1, 0.825f);
+			InstantiateNote(-10, 0.825f);
+			break;
+		case ToneNote.B4:
+			InstantiateNote(-1, 0.975f);
+			InstantiateNote(-10, 0.975f);
+			break;
+			
+			
+		case ToneNote.C5:
+			InstantiateNote(0, 0.075f);
+			break;
+		case ToneNote.D5:
+			InstantiateNote(0, 0.225f);
+			break;
+		case ToneNote.E5:
+			InstantiateNote(0, 0.375f);
+			break;
+		case ToneNote.F5:
+			InstantiateNote(0, 0.525f);
+			break;
+		case ToneNote.G5:
+			InstantiateNote(0, 0.675f);
+			break;
+		case ToneNote.A5:
+			InstantiateNote(0, 0.825f);
+			break;
+		case ToneNote.B5:
+			InstantiateNote(0, 0.975f);
+			break;
+			
+			
+		case ToneNote.C6:
+			InstantiateNote(1, 0.075f);
+			InstantiateNote(10, 0.075f);
+			break;
+		case ToneNote.D6:
+			InstantiateNote(1, 0.225f);
+			InstantiateNote(10, 0.225f);
+			break;
+		case ToneNote.E6:
+			InstantiateNote(1, 0.375f);
+			InstantiateNote(10, 0.375f);
+			break;
+		case ToneNote.F6:
+			InstantiateNote(1, 0.525f);
+			InstantiateNote(10, 0.525f);
+			break;
+		case ToneNote.G6:
+			InstantiateNote(1, 0.675f);
+			InstantiateNote(10, 0.675f);
+			break;
+		case ToneNote.A6:
+			InstantiateNote(1, 0.825f);
+			InstantiateNote(10, 0.825f);
+			break;
+		case ToneNote.B6:
+			InstantiateNote(1, 0.975f);
+			InstantiateNote(10, 0.975f);
+			break;
+			
+			
+		default:
+			break;
+		}
+	}
 
 
 
@@ -289,13 +385,14 @@ public class ControlGame6 : MonoBehaviour
 	// PlayMidi -------------------------------------------------------------------------------------
 	public void PlayBGM()
 	{
+		_MidiPlayer.Play();
 		_bIsPlay = true;
 
 		_fMusicTime = 0f;
 		_nCurNoteCounter = 0;
 
 		CancelInvoke("DelayPlayBGM");
-		Invoke("DelayPlayBGM", 3.8f);
+		Invoke("DelayPlayBGM", 3.9f);
 	}
 
 
@@ -346,22 +443,22 @@ public class ControlGame6 : MonoBehaviour
 
 
 	// 해당 노트 타이밍-----------------------------------------
-	void Update_CheckNoteTiming()
-	{
-		if(!_bIsPlay)
-			return;
-
-		if (_lstMidiNote[_nCurNoteCounter].StartTime > _nMusicTime)
-			return;
-
-		MakeNote(_lstMidiNote[_nCurNoteCounter].Number);
-
-		if (_lstMidiNote.Count-1 == _nCurNoteCounter)
-			_bIsPlay = false;
-
-		if (_lstMidiNote.Count-1 > _nCurNoteCounter)
-			_nCurNoteCounter ++;
-	}
+//	void Update_CheckNoteTiming()
+//	{
+//		if(!_bIsPlay)
+//			return;
+//
+//		if (_lstMidiNote[_nCurNoteCounter].StartTime > _nMusicTime)
+//			return;
+//
+//		//MakeNote(_lstMidiNote[_nCurNoteCounter].Number);
+//
+//		if (_lstMidiNote.Count-1 == _nCurNoteCounter)
+//			_bIsPlay = false;
+//
+//		if (_lstMidiNote.Count-1 > _nCurNoteCounter)
+//			_nCurNoteCounter ++;
+//	}
 
 
 
@@ -376,97 +473,97 @@ public class ControlGame6 : MonoBehaviour
 
 
 	// 노트생성---------------------------------------------
-	void MakeNote(int p_Int)
-	{
-		switch(p_Int)
-		{
-		case 48:
-			InstantiateNote(-1, 0.075f);
-			InstantiateNote(-10, 0.075f);
-			break;
-		case 50:
-			InstantiateNote(-1, 0.225f);
-			InstantiateNote(-10, 0.225f);
-			break;
-		case 52:
-			InstantiateNote(-1, 0.375f);
-			InstantiateNote(-10, 0.375f);
-			break;
-		case 53:
-			InstantiateNote(-1, 0.525f);
-			InstantiateNote(-10, 0.525f);
-			break;
-		case 55:
-			InstantiateNote(-1, 0.675f);
-			InstantiateNote(-10, 0.675f);
-			break;
-		case 57:
-			InstantiateNote(-1, 0.825f);
-			InstantiateNote(-10, 0.825f);
-			break;
-		case 59:
-			InstantiateNote(-1, 0.975f);
-			InstantiateNote(-10, 0.975f);
-			break;
-			
-			
-		case 60:
-			InstantiateNote(0, 0.075f);
-			break;
-		case 62:
-			InstantiateNote(0, 0.225f);
-			break;
-		case 64:
-			InstantiateNote(0, 0.375f);
-			break;
-		case 65:
-			InstantiateNote(0, 0.525f);
-			break;
-		case 67:
-			InstantiateNote(0, 0.675f);
-			break;
-		case 69:
-			InstantiateNote(0, 0.825f);
-			break;
-		case 71:
-			InstantiateNote(0, 0.975f);
-			break;
-
-
-		case 72:
-			InstantiateNote(1, 0.075f);
-			InstantiateNote(10, 0.075f);
-			break;
-		case 74:
-			InstantiateNote(1, 0.225f);
-			InstantiateNote(10, 0.225f);
-			break;
-		case 76:
-			InstantiateNote(1, 0.375f);
-			InstantiateNote(10, 0.375f);
-			break;
-		case 77:
-			InstantiateNote(1, 0.525f);
-			InstantiateNote(10, 0.525f);
-			break;
-		case 79:
-			InstantiateNote(1, 0.675f);
-			InstantiateNote(10, 0.675f);
-			break;
-		case 81:
-			InstantiateNote(1, 0.825f);
-			InstantiateNote(10, 0.825f);
-			break;
-		case 83:
-			InstantiateNote(1, 0.975f);
-			InstantiateNote(10, 0.975f);
-			break;
-
-
-		default:
-			break;
-		}
-	}
+//	void MakeNote(int p_Int)
+//	{
+//		switch(p_Int)
+//		{
+//		case 48:
+//			InstantiateNote(-1, 0.075f);
+//			InstantiateNote(-10, 0.075f);
+//			break;
+//		case 50:
+//			InstantiateNote(-1, 0.225f);
+//			InstantiateNote(-10, 0.225f);
+//			break;
+//		case 52:
+//			InstantiateNote(-1, 0.375f);
+//			InstantiateNote(-10, 0.375f);
+//			break;
+//		case 53:
+//			InstantiateNote(-1, 0.525f);
+//			InstantiateNote(-10, 0.525f);
+//			break;
+//		case 55:
+//			InstantiateNote(-1, 0.675f);
+//			InstantiateNote(-10, 0.675f);
+//			break;
+//		case 57:
+//			InstantiateNote(-1, 0.825f);
+//			InstantiateNote(-10, 0.825f);
+//			break;
+//		case 59:
+//			InstantiateNote(-1, 0.975f);
+//			InstantiateNote(-10, 0.975f);
+//			break;
+//			
+//			
+//		case 60:
+//			InstantiateNote(0, 0.075f);
+//			break;
+//		case 62:
+//			InstantiateNote(0, 0.225f);
+//			break;
+//		case 64:
+//			InstantiateNote(0, 0.375f);
+//			break;
+//		case 65:
+//			InstantiateNote(0, 0.525f);
+//			break;
+//		case 67:
+//			InstantiateNote(0, 0.675f);
+//			break;
+//		case 69:
+//			InstantiateNote(0, 0.825f);
+//			break;
+//		case 71:
+//			InstantiateNote(0, 0.975f);
+//			break;
+//
+//
+//		case 72:
+//			InstantiateNote(1, 0.075f);
+//			InstantiateNote(10, 0.075f);
+//			break;
+//		case 74:
+//			InstantiateNote(1, 0.225f);
+//			InstantiateNote(10, 0.225f);
+//			break;
+//		case 76:
+//			InstantiateNote(1, 0.375f);
+//			InstantiateNote(10, 0.375f);
+//			break;
+//		case 77:
+//			InstantiateNote(1, 0.525f);
+//			InstantiateNote(10, 0.525f);
+//			break;
+//		case 79:
+//			InstantiateNote(1, 0.675f);
+//			InstantiateNote(10, 0.675f);
+//			break;
+//		case 81:
+//			InstantiateNote(1, 0.825f);
+//			InstantiateNote(10, 0.825f);
+//			break;
+//		case 83:
+//			InstantiateNote(1, 0.975f);
+//			InstantiateNote(10, 0.975f);
+//			break;
+//
+//
+//		default:
+//			break;
+//		}
+//	}
 
 
 
