@@ -8,7 +8,8 @@ public class AvatarTest : MonoBehaviour
 {
 	public RobotProxy robot;
 	public Animation animation;
-	public AvatarJoint[] joints;
+	public AvatarJoint[] avatarJoints;
+	public SimpleJoint[] simpleJoints;
 
 	private string _statusMessage = "Ready";
 	private bool _connecting = false;
@@ -39,11 +40,7 @@ public class AvatarTest : MonoBehaviour
 			{
 				_statusMessage = "Disconnected";
 				robot.Disconnect();
-				foreach(AvatarJoint joint in joints)
-				{
-					if(joint != null)
-						joint.follow = false;
-				}
+				SetJointFollow(false);
 			}
 			guiRect.y += (guiRect.height + 5);
 			
@@ -107,11 +104,7 @@ public class AvatarTest : MonoBehaviour
 		_statusMessage = "Success to conncet";
 		_connecting = false;
 
-		foreach(AvatarJoint joint in joints)
-		{
-			if(joint != null)
-				joint.follow = true;
-		}
+		SetJointFollow(true);
 	}
 	
 	void OnConnectionFailed(object sender, EventArgs e)
@@ -125,15 +118,26 @@ public class AvatarTest : MonoBehaviour
 		_statusMessage = "Disconnected";
 		_connecting = false;
 
-		foreach(AvatarJoint joint in joints)
-		{
-			if(joint != null)
-				joint.follow = false;
-		}
+		SetJointFollow(false);
 	}
 	
 	void OnSearchCompleted(object sender, EventArgs e)
 	{
 		_statusMessage = "Search completed";
+	}
+
+	void SetJointFollow(bool follow)
+	{
+		foreach(AvatarJoint joint in avatarJoints)
+		{
+			if(joint != null)
+				joint.follow = follow;
+		}
+
+		foreach(SimpleJoint joint in simpleJoints)
+		{
+			if(joint != null)
+				joint.follow = follow;
+		}
 	}
 }

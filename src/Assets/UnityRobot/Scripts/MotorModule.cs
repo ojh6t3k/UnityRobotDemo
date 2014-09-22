@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace UnityRobot
 {
+	[AddComponentMenu("UnityRobot/MotorModule")]
 	public class MotorModule : ModuleProxy
 	{
 		private short _speed;

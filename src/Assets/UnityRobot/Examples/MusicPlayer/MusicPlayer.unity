@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a93bed531c40184cbea79b9353e4fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midi: {fileID: 4900000, guid: 85917c6a3f244f84096bc647a2ee165b, type: 3}
+  midi: {fileID: 4900000, guid: de8019e53f530ba46b89a9554747875a, type: 3}
   tone: {fileID: 1792611082}
   tracks: []
 --- !u!1 &1792611080

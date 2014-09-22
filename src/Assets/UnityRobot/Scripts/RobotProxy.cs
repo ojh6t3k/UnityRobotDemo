@@ -8,6 +8,7 @@ using System.IO.Ports;
 
 namespace UnityRobot
 {
+	[AddComponentMenu("UnityRobot/RobotProxy")]
 	public class RobotProxy : MonoBehaviour
 	{
 		[HideInInspector]
@@ -32,7 +33,7 @@ namespace UnityRobot
 			Ping = 0x85 //133
 		}
 
-		public float timeoutSec = 1f;
+		public float timeoutSec = 5f;
 		public ModuleProxy[] modules = new ModuleProxy[0];
 
 		public EventHandler OnConnected;
@@ -84,6 +85,8 @@ namespace UnityRobot
 		// Use this for initialization
 		void Start ()
 		{
+			foreach(ModuleProxy module in modules)
+				module.owner = this;
 		}
 		
 		// Update is called once per frame
@@ -169,10 +172,13 @@ namespace UnityRobot
 										for(int j=0; j<_rxDataBytes.Count; j++)
 										{
 											if(bit == 1)
+											{
 												_rxDataBytes[j] = (byte)(_rxDataBytes[j] << bit);
+												bit++;
+											}
 											else if(bit == 8)
 											{
-												_rxDataBytes[j -1] |= _rxDataBytes[j];
+												_rxDataBytes[j - 1] |= _rxDataBytes[j];
 												_rxDataBytes.RemoveAt(j);
 												j--;
 												bit = 1;
@@ -184,10 +190,9 @@ namespace UnityRobot
 													_rxDataBytes.RemoveAt(j);
 												else
 													_rxDataBytes[j] = (byte)(_rxDataBytes[j] << bit);
+												bit++;
 											}
-											bit++;
 										}
-
 										foreach(ModuleProxy module in modules)
 										{
 											if(module.id == _id)
@@ -243,8 +248,8 @@ namespace UnityRobot
 											temp = (byte)(dataBytes[i] << (7 - bit));
 											if(i == (dataBytes.Length - 1))
 												data7bitBytes.Add((byte)(temp & 0x7F));
+											bit++;
 										}
-										bit++;
 									}
 
 									writeBytes.Add((byte)data7bitBytes.Count); // num bytes

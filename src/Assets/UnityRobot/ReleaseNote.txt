@@ -3,8 +3,12 @@ This is a result of Rokit for Arduino Project(http://rokitarduino.org)
 All right reserved Robolink(http://www.robolink.co.kr)
 
 [Release Note]
-*v1.0.0b2 (?/?/2014)
--under development
+*v1.0.0b3 (September/?/2014)
+-Under development
+
+*v1.0.0b2 (August/3/2014)
+-New: Add ToneModule.
+-New: Add Example of MusicPlayer 
 
 *v1.0.0b1 (June/25/2014)
 -First released.
