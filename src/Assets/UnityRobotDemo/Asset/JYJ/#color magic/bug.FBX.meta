@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: f84f496d702c85542a76a7df9c5d8de1
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Bone02
+    100002: Bone23
+    100004: Bone24
+    100006: Bone25
+    100008: Bone26
+    100010: Bone27
+    100012: Bone28
+    100014: Bone29
+    100016: Bone30
+    100018: Bone31
+    100020: Bone32
+    100022: Bone33
+    100024: Bone34
+    100026: Bone35
+    100028: Bone36
+    100030: Bone37
+    100032: Bone38
+    100034: Bone39
+    100036: Bone40
+    100038: Bone41
+    100040: Bone42
+    100042: Bone43
+    100044: Bone44
+    100046: Bone45
+    100048: //RootNode
+    100050: connectBone06
+    100052: connectBone07
+    100054: connectBone08
+    100056: connectBone09
+    100058: connectBone10
+    100060: Line01
+    100062: Object02
+    100064: Particle View 01
+    400000: Bone02
+    400002: Bone23
+    400004: Bone24
+    400006: Bone25
+    400008: Bone26
+    400010: Bone27
+    400012: Bone28
+    400014: Bone29
+    400016: Bone30
+    400018: Bone31
+    400020: Bone32
+    400022: Bone33
+    400024: Bone34
+    400026: Bone35
+    400028: Bone36
+    400030: Bone37
+    400032: Bone38
+    400034: Bone39
+    400036: Bone40
+    400038: Bone41
+    400040: Bone42
+    400042: Bone43
+    400044: Bone44
+    400046: Bone45
+    400048: //RootNode
+    400050: connectBone06
+    400052: connectBone07
+    400054: connectBone08
+    400056: connectBone09
+    400058: connectBone10
+    400060: Line01
+    400062: Object02
+    400064: Particle View 01
+    2300000: Object02
+    3300000: Object02
+    4300000: Line01
+    4300002: Object02
+    6400000: Object02
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Line01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 70
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone26
+        weight: 1
+      - path: Bone27
+        weight: 1
+      - path: Bone27/Bone35
+        weight: 1
+      - path: Bone27/Bone35/Bone36
+        weight: 1
+      - path: Bone27/Bone35/Bone36/Bone34
+        weight: 1
+      - path: connectBone06
+        weight: 1
+      - path: connectBone06/Bone02
+        weight: 1
+      - path: connectBone06/Bone02/Bone37
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44/Bone45
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44/Bone45/Bone23
+        weight: 1
+      - path: connectBone06/connectBone07
+        weight: 1
+      - path: connectBone06/connectBone07/Bone24
+        weight: 1
+      - path: connectBone06/connectBone07/Bone24/Bone25
+        weight: 1
+      - path: connectBone06/connectBone08
+        weight: 1
+      - path: connectBone06/connectBone08/Bone32
+        weight: 1
+      - path: connectBone06/connectBone08/Bone32/Bone33
+        weight: 1
+      - path: connectBone06/connectBone09
+        weight: 1
+      - path: connectBone06/connectBone09/Bone28
+        weight: 1
+      - path: connectBone06/connectBone09/Bone28/Bone29
+        weight: 1
+      - path: connectBone06/connectBone10
+        weight: 1
+      - path: connectBone06/connectBone10/Bone30
+        weight: 1
+      - path: connectBone06/connectBone10/Bone30/Bone31
+        weight: 1
+      - path: Line01
+        weight: 1
+      - path: Object02
+        weight: 1
+      - path: Particle View 01
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
