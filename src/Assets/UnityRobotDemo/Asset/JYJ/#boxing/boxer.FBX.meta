@@ -82,7 +82,7 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 1
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
@@ -181,7 +181,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Front
       takeName: Take 001
-      firstFrame: 70
+      firstFrame: 75
       lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
@@ -274,7 +274,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Left_Zap
       takeName: Take 001
-      firstFrame: 110
+      firstFrame: 115
       lastFrame: 140
       wrapMode: 0
       orientationOffsetY: 0
@@ -367,7 +367,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Left_Power
       takeName: Take 001
-      firstFrame: 150
+      firstFrame: 155
       lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
@@ -460,7 +460,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Right_Zap
       takeName: Take 001
-      firstFrame: 190
+      firstFrame: 195
       lastFrame: 220
       wrapMode: 0
       orientationOffsetY: 0
@@ -553,7 +553,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Right_Power
       takeName: Take 001
-      firstFrame: 230
+      firstFrame: 235
       lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
