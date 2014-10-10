@@ -12,6 +12,29 @@ public class Game_PinBall : MonoBehaviour
 	public bool _bGamePlay = false;
 
 	public GameObject		_goBase;
+	public GameObject		_goColliderOpen;
+	public GameObject		_goColliderClose;
+	public GameObject		_goColliderClear;
+	public GameObject		_goDoorL;
+	public GameObject		_goDoorR;
+	public GameObject		_goOpenEffect;
+	public GameObject		_goBall;
+
+	public GameObject[]		_goKey = new GameObject[4];
+	public UISprite[]		_UISprKey = new UISprite[4];
+
+	public UISprite			_UISprNum10;
+	public UISprite			_UISprNum1;
+
+	public AutoMove			_scrSuccess;
+	public AutoMove			_scrTimeOut;
+
+	public float	_fGameTime = 30f;
+	float		_fTime = 0f;
+	
+
+	bool _bIsSuccess = false;
+
 
 	// 밸런스 값---------------
 	float	_fAngleX = 0f;
@@ -19,13 +42,16 @@ public class Game_PinBall : MonoBehaviour
 	float	_fHight = 0f;
 
 
+	int _nGetKey = 0;
+
 
 
 
 	// Start --------------------------------
 	void Start () 
 	{
-	
+		_input_Correction.Set_BufferCount(7);
+		_input_Correction.SetDistance(0f);
 	}
 
 
@@ -33,11 +59,20 @@ public class Game_PinBall : MonoBehaviour
 	// Update -------------------------------
 	void Update () 
 	{
-//		if (!_bGamePlay)
-//			return;
+		if (_input_Correction._nUse_D[0] > 0)
+		{
+			_bGamePlay = true;
+			RestartGame();
+		}
 
+		if (!_bGamePlay)
+			return;
+
+		Update_Time();
 		Update_Output_Ballence();
 		Update_Controll_Base();
+		Update_BallReset();
+		Update_DoorOpen();
 	}
 
 
@@ -48,7 +83,12 @@ public class Game_PinBall : MonoBehaviour
 	{
 		_fAngleX = _input_Correction._fUse_A[0] - _input_Correction._fUse_A[1];
 		_fAngleZ = _input_Correction._fUse_A[2] - _input_Correction._fUse_A[3];
-		_fHight = (_input_Correction._fUse_A[0] + _input_Correction._fUse_A[1] + _input_Correction._fUse_A[2] + _input_Correction._fUse_A[3]) * 0.25f;
+		_fHight = (_input_Correction._fUse_A[0] + _input_Correction._fUse_A[1] + _input_Correction._fUse_A[2] + _input_Correction._fUse_A[3]) * 0.3f;
+
+		_goColliderOpen.transform.localPosition = Vector3.zero;
+		_goColliderOpen.transform.localEulerAngles = Vector3.zero;
+		_goColliderClose.transform.localPosition = Vector3.zero;
+		_goColliderClose.transform.localEulerAngles = Vector3.zero;
 	}
 
 	// 게임판 컨트롤-----------------------------------------
@@ -57,6 +97,134 @@ public class Game_PinBall : MonoBehaviour
 		_goBase.transform.localEulerAngles = new Vector3(_fAngleX, 0f, _fAngleZ) * 90f;
 		_goBase.transform.localPosition = new Vector3(0f, _fHight * -1f, 0f);
 	}
+
+
+	// 시간 제어---------------------------------------------
+	void Update_Time()
+	{
+		if (_fTime <= 0f)
+		{
+			_bGamePlay = false;
+			_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);
+			_scrTimeOut.StartMove();
+
+			_fTime = 0f;
+		}
+
+
+		string strTime = Mathf.Floor(_fTime).ToString();
+		if (strTime.Length > 1)
+		{
+			_UISprNum10.spriteName = strTime.Substring(0,1);
+			_UISprNum1.spriteName = strTime.Substring(1,1);
+		}
+		else
+		{
+			_UISprNum10.spriteName = "0";
+			_UISprNum1.spriteName = strTime.Substring(0,1);
+		}
+
+
+
+
+		_fTime = _fTime - Time.deltaTime;
+	}
+
+
+	// 볼 리셋-----------------------------------
+	void Update_BallReset()
+	{
+		if(_goBall.transform.localPosition.y < -20f)
+		{
+			_goBall.transform.localPosition = new Vector3(0f, 6f, 0f);
+			_goBall.rigidbody.velocity = Vector3.zero;
+		}
+	}
+
+
+	// 열쇠 획득후 문열림-----------------------------
+	void Update_DoorOpen()
+	{
+		if (_nGetKey < 4)
+			return;
+
+		if (_goDoorL.transform.localPosition.x <= -1.08f)
+			return;
+
+
+		if (_goDoorL.transform.localPosition.x > -1.08f)
+		{
+			_goDoorL.transform.localPosition = new Vector3(_goDoorL.transform.localPosition.x - Time.deltaTime, -0.04f, 0f);
+			_goDoorR.transform.localPosition = new Vector3(_goDoorR.transform.localPosition.x + Time.deltaTime, -0.04f, 0f);
+		}
+
+		if (_goDoorL.transform.localPosition.x <= -1.08f)
+		{
+			_goOpenEffect.SetActive(true);
+			_goColliderOpen.SetActive(true);
+			_goColliderClose.SetActive(false);
+			_goColliderClear.SetActive(true);
+		}
+	}
+
+
+
+	// 열쇠 획득---------------------------------
+	public void GetKey()
+	{
+		_nGetKey++;
+		_UISprKey[_nGetKey-1].spriteName = "left_key_indecator_get";
+	}
+
+
+	// 게임 클리어--------------------------------
+	public void GameClear()
+	{
+		_bGamePlay = false;
+		_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);
+		_goOpenEffect.SetActive(false);
+		_scrSuccess.StartMove();
+	}
+
+
+
+	// 리스타트 게임------------------------------
+	public void RestartGame()
+	{
+		_fTime = _fGameTime;
+
+		_goKey[0].SetActive(true);
+		_goKey[1].SetActive(true);
+		_goKey[2].SetActive(true);
+		_goKey[3].SetActive(true);
+		_nGetKey = 0;
+		
+		_goBall.transform.localPosition = new Vector3(0f, 6f, 0f);
+		_goBall.rigidbody.velocity = Vector3.zero;
+
+		_goDoorL.transform.localPosition = new Vector3(-0.35f, -0.04f, 0f);
+		_goDoorR.transform.localPosition = new Vector3(0.35f, -0.04f, 0f);
+
+		_goOpenEffect.SetActive(false);
+		_goColliderOpen.SetActive(false);
+		_goColliderClose.SetActive(true);
+		_goColliderClear.SetActive(false);
+
+		_UISprKey[0].spriteName = "left_key_indecator_empty";
+		_UISprKey[1].spriteName = "left_key_indecator_empty";
+		_UISprKey[2].spriteName = "left_key_indecator_empty";
+		_UISprKey[3].spriteName = "left_key_indecator_empty";
+
+		_scrSuccess.Reposition();
+		_scrTimeOut.Reposition();
+	}
+
+
+
+
+
+
+
 
 
 

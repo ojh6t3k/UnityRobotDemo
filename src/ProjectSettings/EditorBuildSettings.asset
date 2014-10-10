@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/BasicDemo_Launcher.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Basic Demo.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Ball.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Flight.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Chameleon.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Camera.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Hit.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/BasicDemo/Scenes/Music.unity

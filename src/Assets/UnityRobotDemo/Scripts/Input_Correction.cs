@@ -7,7 +7,7 @@ using UnityRobot;
 
 public class Input_Correction : MonoBehaviour 
 {
-	public RobotProxy		_RobotProxy;
+	//public RobotProxy		_RobotProxy;
 	public RobotConnect		_RobotConnect;
 	public EachGauge[]		_EachGaugeA = new EachGauge[8];
 	public EachGauge[]		_EachGaugeD = new EachGauge[16];
@@ -117,8 +117,8 @@ public class Input_Correction : MonoBehaviour
 		_lstCal_A.Add (_fCal_A6);
 		_lstCal_A.Add (_fCal_A7);
 
-		Set_BufferCount(_Sensitivity);
-		_UILblDistance.text = _Distance.ToString();
+		//Set_BufferCount(_Sensitivity);
+		//SetDistance(_Distance);
 
 
 		for (int i=0; i < 8; i++) // 아날로그 8개----
@@ -167,8 +167,10 @@ public class Input_Correction : MonoBehaviour
 
 
 	// 버퍼카운트 셋팅-----------------------------------
-	void Set_BufferCount(int p_Sensitivity)
+	public void Set_BufferCount(int p_Sensitivity)
 	{
+		_Sensitivity = p_Sensitivity;
+
 		_nBufferCount = (10 - p_Sensitivity) * 5; // 민감도에 따른 버퍼 카운트수 결정------------
 		if(_nBufferCount > 0)
 		{
@@ -233,7 +235,7 @@ public class Input_Correction : MonoBehaviour
 		if (_Distance < 7)
 			_Distance++;
 
-		_UILblDistance.text = _Distance.ToString();
+		SetDistance(_Distance);
 	}
 
 	public void SetDistanceDown()
@@ -241,8 +243,16 @@ public class Input_Correction : MonoBehaviour
 		if (_Distance > 0)
 			_Distance--;
 		
+		SetDistance(_Distance);
+	}
+
+	public void SetDistance(float p_Distance)
+	{
+		_Distance = p_Distance;
 		_UILblDistance.text = _Distance.ToString();
 	}
+
+
 
 
 	// 리셋 캘리브레이션----------------------
@@ -270,6 +280,9 @@ public class Input_Correction : MonoBehaviour
 	// Update -------------------------------------------------
 	void Update () 
 	{
+		if (!_RobotConnect._connecting)
+			return;
+
 		Update_ValueCorrection();
 		Update_BufferRollingCount();
 

@@ -9,7 +9,7 @@ public class RobotConnect : MonoBehaviour
 	public RobotProxy _RobotProxy;
 	public Input_Correction	_Input_Correction;
 
-	private bool	_connecting = false;
+	public bool	_connecting = false;
 
 	public UIPopupList	_UIPortList;
 	public GameObject	_goPopPortList;
@@ -73,14 +73,19 @@ public class RobotConnect : MonoBehaviour
 	}
 
 
-	
+
+	void Connecting()
+	{
+		_connecting = true;
+	}
+
 
 
 
 
 	void OnConnected(object sender, EventArgs e)
 	{
-		_connecting = true;
+		Invoke("Connecting", 0.5f);
 		_Input_Correction.Invoke("ResetCalibration", 1f);
 		_goPopPortList.SetActive(false);	// NGUI
 		_UIPortList.enabled = true;			// NGUI
