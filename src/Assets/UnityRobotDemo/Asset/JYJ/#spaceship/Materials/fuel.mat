@@ -48,12 +48,12 @@ Material:
         second: .130098924
       data:
         first:
-          name: _EmissionLM
-        second: 0
-      data:
-        first:
           name: _InvFade
         second: 1
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
       data:
         first:
           name: _Parallax

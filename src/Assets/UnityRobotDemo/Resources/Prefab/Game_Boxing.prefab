@@ -1134,8 +1134,21 @@ MonoBehaviour:
   _bGamePlay: 0
   _bIsEnableAttack: 1
   _aniBoxer: {fileID: 11100000}
+  _matBoxer: {fileID: 2100000, guid: 95f261ce3527f2d49867dab45ec7e660, type: 2}
+  _texBoxer1: {fileID: 2800000, guid: 5f4d7336597a4b14f990893ed528e846, type: 3}
+  _texBoxer2: {fileID: 2800000, guid: 9c2723a6ac35145499e08b2c7b0ecf9e, type: 3}
+  _texBoxer3: {fileID: 2800000, guid: 60ea2bfe2fddaf04384e205597c8dbc9, type: 3}
+  _efZap: {fileID: 0}
+  _efPower: {fileID: 0}
+  _efFlash: {fileID: 0}
   _goCameraCase: {fileID: 0}
   _goCamera: {fileID: 0}
+  _UISprGaugeBar: {fileID: 0}
+  _UISprNum10: {fileID: 0}
+  _UISprNum1: {fileID: 0}
+  _scrSuccess: {fileID: 0}
+  _scrTimeOut: {fileID: 0}
+  _fGameTime: 30
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

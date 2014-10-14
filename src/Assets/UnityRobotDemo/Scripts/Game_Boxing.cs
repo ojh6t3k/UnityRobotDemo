@@ -29,11 +29,33 @@ public class Game_Boxing : MonoBehaviour
 	public bool _bGamePlay = false;
 	public bool	_bIsEnableAttack = true;
 	public Animation		_aniBoxer;
+	public Material			_matBoxer;
+	public Texture			_texBoxer1;
+	public Texture			_texBoxer2;
+	public Texture			_texBoxer3;
+
+	public EachBoxingEffect	_efZap;
+	public EachBoxingEffect	_efPower;
+	public AutoFlash		_efFlash;
 
 	public GameObject		_goCameraCase;
 	public GameObject		_goCamera;
 
-	float	_fDamageDistance = -6f;
+	float	_fDamageDistance = -6f; // 데미지 순간 카메라 워크
+
+	public UISprite			_UISprGaugeBar;
+	float	_fEnemyHP = 1f;
+
+
+	public UISprite			_UISprNum10;
+	public UISprite			_UISprNum1;
+	
+	public AutoMove			_scrSuccess;
+	public AutoMove			_scrTimeOut;
+
+	public float	_fGameTime = 30f;
+	float		_fTime = 0f;
+
 
 
 	// 가속도 값---------------
@@ -76,6 +98,7 @@ public class Game_Boxing : MonoBehaviour
 		Update_CheckAni();
 		Update_CameraWave();
 		Update_Camera();
+		Update_Time();
 	}
 
 
@@ -103,40 +126,70 @@ public class Game_Boxing : MonoBehaviour
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.L_POWER);
+			_efPower.StartBoxingEffect();
+			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
-			Debug.Log("LL");
+			_fEnemyHP = _fEnemyHP - 0.1f;
+			//Debug.Log("LL");
 		}
 		else if (_fSpeedL < -20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.L_ZAP);
+			_efZap.StartBoxingEffect();
+			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
-			Debug.Log("L");
+			_fEnemyHP = _fEnemyHP - 0.03f;
+			//Debug.Log("L");
 		}
 		else if (_fSpeedM < -20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.FRONT);
+			_efZap.StartBoxingEffect();
+			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
-			Debug.Log("M");
+			_fEnemyHP = _fEnemyHP - 0.03f;
+			//Debug.Log("M");
 		}
 		else if (_fSpeedR < -30f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.R_POWER);
+			_efPower.StartBoxingEffect();
+			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
-			Debug.Log("RR");
+			_fEnemyHP = _fEnemyHP - 0.1f;
+			//Debug.Log("RR");
 		}
 		else if (_fSpeedR < -20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.R_ZAP);
+			_efZap.StartBoxingEffect();
+			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
-			Debug.Log("R");
+			_fEnemyHP = _fEnemyHP - 0.03f;
+			//Debug.Log("R");
 		}
 
+		_UISprGaugeBar.fillAmount = _fEnemyHP;
 
+		if ((_fEnemyHP <= 0.66f) && (_fEnemyHP > 0.33f) && (_matBoxer.mainTexture != _texBoxer2))
+		{
+			_matBoxer.mainTexture = _texBoxer2;
+		}
+		else if ((_fEnemyHP <= 0.33f) && (_matBoxer.mainTexture != _texBoxer3))
+		{
+			_matBoxer.mainTexture = _texBoxer3;
+		}
+		else if (_fEnemyHP <= 0f)
+		{
+			GameClear();
+		}
 	}
+
+
 
 
 	// PlayAni ---------------------------------------------------
@@ -210,8 +263,40 @@ public class Game_Boxing : MonoBehaviour
 
 
 
+	// 시간 제어---------------------------------------------
+	void Update_Time()
+	{
+		if (_fTime <= 0f)
+		{
+			_bGamePlay = false;
+			_scrTimeOut.StartMove();
+			_fTime = 0f;
+		}
+
+		string strTime = Mathf.Floor(_fTime).ToString();
+		if (strTime.Length > 1)
+		{
+			_UISprNum10.spriteName = strTime.Substring(0,1);
+			_UISprNum1.spriteName = strTime.Substring(1,1);
+		}
+		else
+		{
+			_UISprNum10.spriteName = "0";
+			_UISprNum1.spriteName = strTime.Substring(0,1);
+		}
+
+		_fTime = _fTime - Time.deltaTime;
+	}
 
 
+
+
+	// 게임 클리어--------------------------------
+	public void GameClear()
+	{
+		_bGamePlay = false;
+		_scrSuccess.StartMove();
+	}
 
 
 
@@ -219,8 +304,18 @@ public class Game_Boxing : MonoBehaviour
 	// 리스타트 게임------------------------------
 	public void RestartGame()
 	{
+		_fTime = _fGameTime;
+
 		PlayAni(EAttack.IDLE);
 		_bGamePlay = true;
+
+		_bIsEnableAttack = true;
+		_fEnemyHP = 1f;
+
+		_matBoxer.mainTexture = _texBoxer1;
+
+		_scrSuccess.Reposition();
+		_scrTimeOut.Reposition();
 	}
 
 

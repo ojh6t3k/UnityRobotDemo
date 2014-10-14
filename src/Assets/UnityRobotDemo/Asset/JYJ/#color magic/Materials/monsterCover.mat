@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: monster 1
+  m_Name: monsterCover
   m_Shader: {fileID: 4800000, guid: 1a798d2cf506e844bae04e8b098dbdef, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -72,7 +72,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: 1, b: .5448277, a: 1}
+        second: {r: .224531025, g: .631073296, b: .45478332, a: 1}
       data:
         first:
           name: _Emission

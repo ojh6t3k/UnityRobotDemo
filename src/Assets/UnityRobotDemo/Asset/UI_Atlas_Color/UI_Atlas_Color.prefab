@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: UI_Atlas_Boxing
+  m_Name: UI_Atlas_Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,11 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0c51bb0b6e93049af5e88f93826e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 829c7993470585046882c9fbe406492e, type: 2}
+  material: {fileID: 2100000, guid: f9394b3a025283442a9ac6fa58303ff1, type: 2}
   mSprites:
   - name: 0
-    x: 1661
-    y: 762
+    x: 1662
+    y: 895
     width: 75
     height: 129
     borderLeft: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 1
-    x: 1892
+    x: 1893
     y: 762
     width: 42
     height: 129
@@ -68,7 +68,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 2
-    x: 1819
+    x: 1741
     y: 895
     width: 75
     height: 129
@@ -81,7 +81,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 3
-    x: 1976
+    x: 1977
     y: 895
     width: 66
     height: 129
@@ -94,7 +94,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 4
-    x: 1029
+    x: 1030
     y: 27
     width: 84
     height: 129
@@ -107,8 +107,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 5
-    x: 1898
-    y: 895
+    x: 1741
+    y: 762
     width: 74
     height: 129
     borderLeft: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 6
-    x: 1661
-    y: 895
+    x: 1662
+    y: 762
     width: 75
     height: 129
     borderLeft: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 7
-    x: 1818
+    x: 1819
     y: 762
     width: 70
     height: 129
@@ -146,7 +146,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 8
-    x: 1740
+    x: 1820
     y: 895
     width: 75
     height: 129
@@ -159,8 +159,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 9
-    x: 1740
-    y: 762
+    x: 1899
+    y: 895
     width: 74
     height: 129
     borderLeft: 0
@@ -173,32 +173,32 @@ MonoBehaviour:
     paddingBottom: 0
   - name: gameend_lose
     x: 0
-    y: 109
+    y: 14
     width: 601
-    height: 454
+    height: 482
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 4
-    paddingRight: 5
-    paddingTop: 0
+    paddingLeft: 19
+    paddingRight: 29
+    paddingTop: 42
     paddingBottom: 0
   - name: gameend_win
     x: 0
-    y: 567
-    width: 642
-    height: 457
+    y: 500
+    width: 643
+    height: 524
     borderLeft: 0
     borderRight: 0
     borderTop: 0
     borderBottom: 0
-    paddingLeft: 0
-    paddingRight: 0
+    paddingLeft: 2
+    paddingRight: 4
     paddingTop: 0
     paddingBottom: 0
   - name: hit_effect_01
-    x: 1154
+    x: 1155
     y: 663
     width: 503
     height: 361
@@ -211,7 +211,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: hit_effect_02
-    x: 646
+    x: 647
     y: 627
     width: 504
     height: 397
@@ -224,7 +224,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: hit_effect_03
-    x: 646
+    x: 647
     y: 251
     width: 501
     height: 372
@@ -237,7 +237,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: left_enemy
-    x: 646
+    x: 647
     y: 59
     width: 379
     height: 97
@@ -250,7 +250,7 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: left_healthbar_cover
-    x: 646
+    x: 647
     y: 160
     width: 468
     height: 87
@@ -264,20 +264,20 @@ MonoBehaviour:
     paddingBottom: 0
   - name: left_healthbar_inside
     x: 605
-    y: 537
+    y: 470
     width: 26
     height: 26
-    borderLeft: 2
-    borderRight: 2
-    borderTop: 2
-    borderBottom: 2
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
   - name: right_timeleft
-    x: 0
-    y: 6
+    x: 1155
+    y: 560
     width: 512
     height: 99
     borderLeft: 0
@@ -290,13 +290,13 @@ MonoBehaviour:
     paddingBottom: 0
   - name: White
     x: 605
-    y: 507
+    y: 440
     width: 26
     height: 26
-    borderLeft: 2
-    borderRight: 2
-    borderTop: 2
-    borderBottom: 2
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
     paddingLeft: 0
     paddingRight: 0
     paddingTop: 0

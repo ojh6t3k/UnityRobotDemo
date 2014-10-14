@@ -74,7 +74,8 @@ ModelImporter:
     4300000: Line01
     4300002: Object02
     6400000: Object02
-    7400000: Take 001
+    7400000: Idle
+    7400002: Damage
     9500000: //RootNode
     11100000: //RootNode
     13700000: Line01
@@ -91,19 +92,111 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 1
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Idle
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 70
+      lastFrame: 40
       wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
-      loop: 1
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone26
+        weight: 1
+      - path: Bone27
+        weight: 1
+      - path: Bone27/Bone35
+        weight: 1
+      - path: Bone27/Bone35/Bone36
+        weight: 1
+      - path: Bone27/Bone35/Bone36/Bone34
+        weight: 1
+      - path: connectBone06
+        weight: 1
+      - path: connectBone06/Bone02
+        weight: 1
+      - path: connectBone06/Bone02/Bone37
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44/Bone45
+        weight: 1
+      - path: connectBone06/Bone02/Bone37/Bone38/Bone39/Bone40/Bone41/Bone42/Bone43/Bone44/Bone45/Bone23
+        weight: 1
+      - path: connectBone06/connectBone07
+        weight: 1
+      - path: connectBone06/connectBone07/Bone24
+        weight: 1
+      - path: connectBone06/connectBone07/Bone24/Bone25
+        weight: 1
+      - path: connectBone06/connectBone08
+        weight: 1
+      - path: connectBone06/connectBone08/Bone32
+        weight: 1
+      - path: connectBone06/connectBone08/Bone32/Bone33
+        weight: 1
+      - path: connectBone06/connectBone09
+        weight: 1
+      - path: connectBone06/connectBone09/Bone28
+        weight: 1
+      - path: connectBone06/connectBone09/Bone28/Bone29
+        weight: 1
+      - path: connectBone06/connectBone10
+        weight: 1
+      - path: connectBone06/connectBone10/Bone30
+        weight: 1
+      - path: connectBone06/connectBone10/Bone30/Bone31
+        weight: 1
+      - path: Line01
+        weight: 1
+      - path: Object02
+        weight: 1
+      - path: Particle View 01
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Damage
+      takeName: Take 001
+      firstFrame: 41
+      lastFrame: 70
+      wrapMode: 1
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0

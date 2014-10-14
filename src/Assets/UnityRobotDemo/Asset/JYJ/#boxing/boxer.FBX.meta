@@ -181,7 +181,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Front
       takeName: Take 001
-      firstFrame: 75
+      firstFrame: 72
       lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
@@ -274,7 +274,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Left_Zap
       takeName: Take 001
-      firstFrame: 115
+      firstFrame: 113
       lastFrame: 140
       wrapMode: 0
       orientationOffsetY: 0
@@ -367,7 +367,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Left_Power
       takeName: Take 001
-      firstFrame: 155
+      firstFrame: 152
       lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
@@ -460,7 +460,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Right_Zap
       takeName: Take 001
-      firstFrame: 195
+      firstFrame: 193
       lastFrame: 220
       wrapMode: 0
       orientationOffsetY: 0
@@ -553,7 +553,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Right_Power
       takeName: Take 001
-      firstFrame: 235
+      firstFrame: 232
       lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0

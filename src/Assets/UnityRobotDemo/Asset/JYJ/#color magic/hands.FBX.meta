@@ -63,8 +63,8 @@ ModelImporter:
     400056: ZBrushPolyMesh3D01
     4300000: ZBrushPolyMesh3D
     4300002: ZBrushPolyMesh3D01
-    7400000: Take 001
-    7400002: Take 0010
+    7400000: Idle
+    7400002: Hit
     9500000: //RootNode
     11100000: //RootNode
     13700000: ZBrushPolyMesh3D
@@ -82,11 +82,11 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 0
+    animationWrapMode: 1
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Idle
       takeName: Take 001
       firstFrame: 0
       lastFrame: 40
@@ -94,7 +94,7 @@ ModelImporter:
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
-      loop: 1
+      loop: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -170,11 +170,11 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: Take 0010
+      name: Hit
       takeName: Take 001
-      firstFrame: 80
-      lastFrame: 150
-      wrapMode: 0
+      firstFrame: 100
+      lastFrame: 120
+      wrapMode: 1
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
