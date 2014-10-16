@@ -46,6 +46,21 @@ public class Game_Space : MonoBehaviour
 
 
 
+
+	// Sound ---------------------
+	public GameObject		_sndBGMEngine;
+	public GameObject		_sndBGMSpace;
+	public GameObject		_sndRunOut;
+	public GameObject		_sndCrash;
+	public GameObject		_sndGetEnergy;
+
+
+
+
+
+
+
+
 	// Start --------------------------------
 	void Start () 
 	{
@@ -61,7 +76,7 @@ public class Game_Space : MonoBehaviour
 	// Update ----------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] > 0)
+		if (_input_Correction._nUse_D[0] == 1)
 		{
 			RestartGame();
 		}
@@ -110,6 +125,9 @@ public class Game_Space : MonoBehaviour
 			CancelInvoke("Add_Score");
 			CancelInvoke("MakeStone");
 			_bGamePlay = false;
+			_sndRunOut.audio.Play();
+			_sndBGMEngine.audio.Stop();
+			_sndBGMSpace.audio.Stop();
 		}
 	}
 
@@ -140,7 +158,10 @@ public class Game_Space : MonoBehaviour
 		_fFuel = 1f;
 	}
 
-
+	public void GetItem()
+	{
+		_sndGetEnergy.audio.Play();
+	}
 
 
 
@@ -208,6 +229,7 @@ public class Game_Space : MonoBehaviour
 	{
 		_fCrashTime = 1f;
 		_goCamera.transform.Translate(0f, 0f, -0.1f);
+		_sndCrash.audio.Play();
 	}
 
 	void Update_Crash()
@@ -268,6 +290,17 @@ public class Game_Space : MonoBehaviour
 		_fCrashTime = 0f;
 
 		_bGamePlay = true;
+
+
+		_sndBGMEngine.audio.Stop();
+		_sndBGMSpace.audio.Stop();
+		_sndRunOut.audio.Stop();
+		_sndCrash.audio.Stop();
+		_sndGetEnergy.audio.Stop();
+
+
+		_sndBGMEngine.audio.Play();
+		_sndBGMSpace.audio.Play();
 	}
 
 

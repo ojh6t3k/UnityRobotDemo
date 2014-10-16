@@ -30,7 +30,7 @@ public class SpaceShipCollider : MonoBehaviour
 			GameObject goEffect = Instantiate(goEffectTemp) as GameObject;
 			goEffect.transform.position = other.gameObject.transform.position;
 			_game_Space.RechargeFuel();
-
+			_game_Space.GetItem();
 			Destroy(other.gameObject);
 		}
 
