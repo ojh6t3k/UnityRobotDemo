@@ -47,6 +47,27 @@ public class Game_PinBall : MonoBehaviour
 
 
 
+	// Sound ---------------------
+	public GameObject		_sndBGMWin;
+	public GameObject		_sndBGMLoss;
+	public GameObject		_sndBGMPinBall;
+	public GameObject		_sndBounce;
+	public GameObject		_sndSpring;
+	public GameObject		_sndSlide;
+	public GameObject		_sndGetKey;
+	public GameObject		_sndDoor;
+
+
+
+
+
+
+
+
+
+
+
+
 	// Start --------------------------------
 	void Start () 
 	{
@@ -59,7 +80,7 @@ public class Game_PinBall : MonoBehaviour
 	// Update -------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] > 0)
+		if (_input_Correction._nUse_D[0] == 1)
 		{
 			_bGamePlay = true;
 			RestartGame();
@@ -109,6 +130,9 @@ public class Game_PinBall : MonoBehaviour
 			_scrTimeOut.StartMove();
 
 			_fTime = 0f;
+
+			_sndBGMLoss.audio.Play();
+			_sndBGMPinBall.audio.Stop();
 		}
 
 
@@ -167,6 +191,24 @@ public class Game_PinBall : MonoBehaviour
 		}
 	}
 
+	// BallBounce ---------------------------------------
+	 public void BallBounce(float p_Force)
+	{
+		_sndBounce.audio.volume = p_Force/7f;
+		_sndBounce.audio.Play();
+	}
+
+	// BallSpring ---------------------------------
+	public void BallSpring()
+	{
+		_sndSpring.audio.Play();
+	}
+
+	// BallSliding ------------------------------
+	public void BallSliding()
+	{
+		_sndSlide.audio.Play();
+	}
 
 
 	// 열쇠 획득---------------------------------
@@ -174,6 +216,10 @@ public class Game_PinBall : MonoBehaviour
 	{
 		_nGetKey++;
 		_UISprKey[_nGetKey-1].spriteName = "left_key_indecator_get";
+		_sndGetKey.audio.Play();
+
+		if (_nGetKey == 4)
+			_sndDoor.audio.Play();
 	}
 
 
@@ -184,6 +230,8 @@ public class Game_PinBall : MonoBehaviour
 		_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);
 		_goOpenEffect.SetActive(false);
 		_scrSuccess.StartMove();
+		_sndBGMWin.audio.Play();
+		_sndBGMPinBall.audio.Stop();
 	}
 
 
@@ -217,6 +265,15 @@ public class Game_PinBall : MonoBehaviour
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
+
+
+
+		_sndBGMWin.audio.Stop();
+		_sndBGMLoss.audio.Stop();
+		_sndDoor.audio.Stop();
+		_sndBGMPinBall.audio.Stop();
+
+		_sndBGMPinBall.audio.Play();
 	}
 
 

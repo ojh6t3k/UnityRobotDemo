@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EachBouncer : MonoBehaviour 
 {
+	public Game_PinBall		_Game_PinBall;
 
 	float _fScale = 1f;
 
@@ -41,6 +42,8 @@ public class EachBouncer : MonoBehaviour
 			v3Force.Normalize();
 			other.gameObject.rigidbody.velocity = Vector3.zero;
 			other.gameObject.rigidbody.AddForce(v3Force * 200f);
+
+			_Game_PinBall.BallSpring();
 		}
 	}
 

@@ -5,6 +5,8 @@ using System.Collections;
 
 public class EachAcceleration : MonoBehaviour 
 {
+	public Game_PinBall		_Game_PinBall;
+
 	float _fTimer = 0f;
 
 	public Material _material;
@@ -58,6 +60,8 @@ public class EachAcceleration : MonoBehaviour
 
 			CancelInvoke("ChangeTexture");
 			ChangeTexture();
+
+			_Game_PinBall.BallSliding();
 		}
 	}
 

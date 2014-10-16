@@ -525,6 +525,7 @@ GameObject:
   - 65: {fileID: 6500012}
   - 65: {fileID: 6500010}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400028}
   m_Layer: 0
   m_Name: Collider_Base_Open
   m_TagString: Untagged
@@ -761,6 +762,7 @@ GameObject:
   - 4: {fileID: 400090}
   - 54: {fileID: 5400002}
   - 65: {fileID: 6500002}
+  - 114: {fileID: 11400032}
   m_Layer: 0
   m_Name: Wall4
   m_TagString: Untagged
@@ -843,6 +845,7 @@ GameObject:
   - 4: {fileID: 400100}
   - 54: {fileID: 5400014}
   - 65: {fileID: 6500026}
+  - 114: {fileID: 11400030}
   m_Layer: 0
   m_Name: Collider_Base_Close
   m_TagString: Untagged
@@ -878,6 +881,7 @@ GameObject:
   - 4: {fileID: 400118}
   - 54: {fileID: 5400006}
   - 65: {fileID: 6500004}
+  - 114: {fileID: 11400034}
   m_Layer: 0
   m_Name: Wall3
   m_TagString: Untagged
@@ -914,6 +918,7 @@ GameObject:
   - 4: {fileID: 400128}
   - 54: {fileID: 5400008}
   - 65: {fileID: 6500006}
+  - 114: {fileID: 11400036}
   m_Layer: 0
   m_Name: Wall2
   m_TagString: Untagged
@@ -931,6 +936,7 @@ GameObject:
   - 4: {fileID: 400130}
   - 54: {fileID: 5400010}
   - 65: {fileID: 6500008}
+  - 114: {fileID: 11400038}
   m_Layer: 0
   m_Name: Wall1
   m_TagString: Untagged
@@ -3825,6 +3831,14 @@ MonoBehaviour:
   _scrSuccess: {fileID: 0}
   _scrTimeOut: {fileID: 0}
   _fGameTime: 99
+  _sndBGMWin: {fileID: 0}
+  _sndBGMLoss: {fileID: 0}
+  _sndBGMPinBall: {fileID: 0}
+  _sndBounce: {fileID: 0}
+  _sndSpring: {fileID: 0}
+  _sndSlide: {fileID: 0}
+  _sndGetKey: {fileID: 0}
+  _sndDoor: {fileID: 0}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3836,6 +3850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf8fe64ea8de214982e472618918458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3847,6 +3862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf8fe64ea8de214982e472618918458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3858,6 +3874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf8fe64ea8de214982e472618918458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3869,6 +3886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf8fe64ea8de214982e472618918458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
 --- !u!114 &11400018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3880,6 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6544d0dd1a48fec45b49d535cdd8359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
   _material: {fileID: 2100000, guid: 41e13de67ebc58b48b103a3543a1aa46, type: 2}
   _texRed: {fileID: 2800000, guid: d3bad9203188aef4ea4f2f4fa422fe9a, type: 3}
   _texGreen: {fileID: 2800000, guid: ef2473258ae6f7a46aaf3c372163fdcc, type: 3}
@@ -3896,6 +3915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6544d0dd1a48fec45b49d535cdd8359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
   _material: {fileID: 2100000, guid: f53bc535553525e4ab24159a6a0591d9, type: 2}
   _texRed: {fileID: 2800000, guid: d3bad9203188aef4ea4f2f4fa422fe9a, type: 3}
   _texGreen: {fileID: 2800000, guid: ef2473258ae6f7a46aaf3c372163fdcc, type: 3}
@@ -3912,6 +3932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6544d0dd1a48fec45b49d535cdd8359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
   _material: {fileID: 2100000, guid: d9c937b71879e9a4da2ae66d9a7ff39a, type: 2}
   _texRed: {fileID: 2800000, guid: d3bad9203188aef4ea4f2f4fa422fe9a, type: 3}
   _texGreen: {fileID: 2800000, guid: ef2473258ae6f7a46aaf3c372163fdcc, type: 3}
@@ -3928,6 +3949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6544d0dd1a48fec45b49d535cdd8359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
   _material: {fileID: 2100000, guid: 3108fa75f30e5904f81d6f466a1f8692, type: 2}
   _texRed: {fileID: 2800000, guid: d3bad9203188aef4ea4f2f4fa422fe9a, type: 3}
   _texGreen: {fileID: 2800000, guid: ef2473258ae6f7a46aaf3c372163fdcc, type: 3}
@@ -3942,6 +3964,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cc8349e97fe2474faf511914550a81c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Game_PinBall: {fileID: 11400008}
+--- !u!114 &11400038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730c88b62cf1e5a4880606c161395e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Game_PinBall: {fileID: 11400008}
