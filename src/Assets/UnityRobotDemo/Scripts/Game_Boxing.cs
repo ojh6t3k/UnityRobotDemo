@@ -64,8 +64,17 @@ public class Game_Boxing : MonoBehaviour
 	float	_fSpeedR = 0f;
 
 
-
-
+	// Sound ---------------------
+	public GameObject		_sndPeoPle;
+	public GameObject		_sndBGMWin;
+	public GameObject		_sndBGMLoss;
+	public GameObject		_sndBGMRocky;
+	public GameObject		_sndGong1;
+	public GameObject		_sndGong2;
+	public GameObject		_sndPunch1;
+	public GameObject		_sndPunch2;
+	public GameObject		_sndHahaha;
+	public GameObject		_sndKO;
 
 
 
@@ -85,7 +94,7 @@ public class Game_Boxing : MonoBehaviour
 	// Update -------------------------------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] > 0)
+		if (_input_Correction._nUse_D[0] == 1)
 		{
 			RestartGame();
 		}
@@ -130,6 +139,7 @@ public class Game_Boxing : MonoBehaviour
 			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.1f;
+			_sndPunch2.audio.Play();
 			//Debug.Log("LL");
 		}
 		else if (_fSpeedL < -20f)
@@ -140,6 +150,7 @@ public class Game_Boxing : MonoBehaviour
 			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
+			_sndPunch1.audio.Play();
 			//Debug.Log("L");
 		}
 		else if (_fSpeedM < -20f)
@@ -150,6 +161,7 @@ public class Game_Boxing : MonoBehaviour
 			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
+			_sndPunch1.audio.Play();
 			//Debug.Log("M");
 		}
 		else if (_fSpeedR < -30f)
@@ -160,6 +172,7 @@ public class Game_Boxing : MonoBehaviour
 			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.1f;
+			_sndPunch2.audio.Play();
 			//Debug.Log("RR");
 		}
 		else if (_fSpeedR < -20f)
@@ -170,6 +183,7 @@ public class Game_Boxing : MonoBehaviour
 			_efFlash.StartFlash(0.01f);
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
+			_sndPunch1.audio.Play();
 			//Debug.Log("R");
 		}
 
@@ -271,6 +285,12 @@ public class Game_Boxing : MonoBehaviour
 			_bGamePlay = false;
 			_scrTimeOut.StartMove();
 			_fTime = 0f;
+
+			_sndPeoPle.audio.Stop();
+			_sndBGMRocky.audio.Stop();
+			_sndBGMLoss.audio.Play();
+			_sndGong2.audio.Play();
+			_sndHahaha.audio.Play();
 		}
 
 		string strTime = Mathf.Floor(_fTime).ToString();
@@ -296,6 +316,11 @@ public class Game_Boxing : MonoBehaviour
 	{
 		_bGamePlay = false;
 		_scrSuccess.StartMove();
+
+		_sndPeoPle.audio.Stop();
+		_sndBGMRocky.audio.Stop();
+		_sndBGMWin.audio.Play();
+		_sndKO.audio.Play();
 	}
 
 
@@ -316,6 +341,24 @@ public class Game_Boxing : MonoBehaviour
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
+
+
+
+		_sndPeoPle.audio.Stop();
+		_sndBGMWin.audio.Stop();
+		_sndBGMLoss.audio.Stop();
+		_sndBGMRocky.audio.Stop();
+		_sndGong1.audio.Stop();
+		_sndGong2.audio.Stop();
+		_sndHahaha.audio.Stop();
+		_sndKO.audio.Stop();
+
+		_sndPeoPle.audio.Play();
+		_sndGong1.audio.Play();
+		_sndBGMRocky.audio.Play();
+
+
+
 	}
 
 

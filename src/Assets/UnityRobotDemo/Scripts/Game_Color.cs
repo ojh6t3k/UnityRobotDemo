@@ -135,7 +135,7 @@ public class Game_Color : MonoBehaviour
 	// Update --------------------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] > 0)
+		if (_input_Correction._nUse_D[0] == 1)
 		{
 			RestartGame();
 		}

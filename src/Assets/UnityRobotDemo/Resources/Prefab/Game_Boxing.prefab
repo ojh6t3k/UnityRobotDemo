@@ -1149,6 +1149,11 @@ MonoBehaviour:
   _scrSuccess: {fileID: 0}
   _scrTimeOut: {fileID: 0}
   _fGameTime: 30
+  _sndPeoPle: {fileID: 0}
+  _sndBGMWin: {fileID: 0}
+  _sndBGMLoss: {fileID: 0}
+  _sndGong1: {fileID: 0}
+  _sndGong2: {fileID: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
