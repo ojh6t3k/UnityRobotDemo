@@ -99,6 +99,19 @@ public class Game_Color : MonoBehaviour
 
 
 
+	// Sound ---------------------
+	public GameObject		_sndBeam;
+	public GameObject		_sndSpark;
+	public GameObject		_sndFireVoice;
+	public GameObject		_sndMonsterDie;
+	public GameObject		_sndBGMWin;
+	public GameObject		_sndBGMLoss;
+	public GameObject		_sndBGMColor;
+
+
+
+
+
 
 
 
@@ -216,6 +229,7 @@ public class Game_Color : MonoBehaviour
 			_goHitEffect.SetActive(true);
 			_goBeam.SetActive(true);
 			_matMonster.mainTexture = _texMonDamage;
+			_sndFireVoice.audio.Play();
 		}
 		else if ( (! CheckColors(_fCurMonsterR, _fCurMonsterG, _fCurMonsterB)) && (_bIsHit) )   // Normal
 		{
@@ -229,9 +243,21 @@ public class Game_Color : MonoBehaviour
 		{
 			_fEnemyHP = _fEnemyHP - Time.deltaTime * 0.1f;
 			_UISprGaugeBar.fillAmount = _fEnemyHP;
-			
+
+			if (!_sndBeam.audio.isPlaying)
+				_sndBeam.audio.Play();
+			if (!_sndSpark.audio.isPlaying)
+				_sndSpark.audio.Play();
+
+
+
 			if (_fEnemyHP <= 0f)
 				GameClear();
+		}
+		else
+		{
+			_sndBeam.audio.Stop();
+			_sndSpark.audio.Stop();
 		}
 
 	}
@@ -350,6 +376,8 @@ public class Game_Color : MonoBehaviour
 			_goHitEffect.SetActive(false);
 			_scrTimeOut.StartMove();
 			_fTime = 0f;
+			_sndBGMLoss.audio.Play();
+			_sndBGMColor.audio.Stop();
 		}
 		
 		string strTime = Mathf.Floor(_fTime).ToString();
@@ -376,6 +404,11 @@ public class Game_Color : MonoBehaviour
 		_goHitEffect.SetActive(false);
 		_scrSuccess.StartMove();
 		_fNextMonYPos = -12f;
+		_sndBeam.audio.Stop();
+		_sndSpark.audio.Stop();
+		_sndMonsterDie.audio.Play();
+		_sndBGMWin.audio.Play();
+		_sndBGMColor.audio.Stop();
 	}
 
 
@@ -405,6 +438,19 @@ public class Game_Color : MonoBehaviour
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
+
+
+		_sndBeam.audio.Stop();
+		_sndSpark.audio.Stop();
+		_sndFireVoice.audio.Stop();
+		_sndMonsterDie.audio.Stop();
+		_sndBGMWin.audio.Stop();
+		_sndBGMLoss.audio.Stop();
+		_sndBGMColor.audio.Stop();
+
+
+
+		_sndBGMColor.audio.Play();
 	}
 
 
