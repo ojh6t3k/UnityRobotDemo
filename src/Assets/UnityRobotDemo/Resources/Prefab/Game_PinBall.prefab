@@ -3831,6 +3831,9 @@ MonoBehaviour:
   _scrSuccess: {fileID: 0}
   _scrTimeOut: {fileID: 0}
   _fGameTime: 99
+  _texStart: {fileID: 0}
+  _texStep1: {fileID: 0}
+  _texStep2: {fileID: 0}
   _sndBGMWin: {fileID: 0}
   _sndBGMLoss: {fileID: 0}
   _sndBGMPinBall: {fileID: 0}

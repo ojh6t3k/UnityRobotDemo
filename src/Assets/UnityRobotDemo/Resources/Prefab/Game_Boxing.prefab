@@ -1152,8 +1152,13 @@ MonoBehaviour:
   _sndPeoPle: {fileID: 0}
   _sndBGMWin: {fileID: 0}
   _sndBGMLoss: {fileID: 0}
+  _sndBGMRocky: {fileID: 0}
   _sndGong1: {fileID: 0}
   _sndGong2: {fileID: 0}
+  _sndPunch1: {fileID: 0}
+  _sndPunch2: {fileID: 0}
+  _sndHahaha: {fileID: 0}
+  _sndKO: {fileID: 0}
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

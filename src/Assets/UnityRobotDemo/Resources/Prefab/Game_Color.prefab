@@ -3882,6 +3882,9 @@ MonoBehaviour:
   _goMonster: {fileID: 100132}
   _goBeam: {fileID: 100048}
   _goHitEffect: {fileID: 100142}
+  _texStart: {fileID: 0}
+  _texStep1: {fileID: 0}
+  _texStep2: {fileID: 0}
   _sndBeam: {fileID: 0}
   _sndSpark: {fileID: 0}
   _sndFireVoice: {fileID: 0}

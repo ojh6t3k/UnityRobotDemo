@@ -98,6 +98,14 @@ public class Game_Color : MonoBehaviour
 	float	_fColorB = 0f;
 
 
+	public GameObject		_texStart;
+
+	int		_nStep = 0;
+	public	GameObject		_texStep1;
+	public	GameObject		_texStep2;
+
+
+
 
 	// Sound ---------------------
 	public GameObject		_sndBeam;
@@ -135,8 +143,32 @@ public class Game_Color : MonoBehaviour
 	// Update --------------------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] == 1)
+		if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 0) )
 		{
+			_nStep = 1;
+			ShowStep1();
+			_bGamePlay = false;
+			_sndBeam.audio.Stop();
+			_sndSpark.audio.Stop();
+			_sndFireVoice.audio.Stop();
+			_sndMonsterDie.audio.Stop();
+			_sndBGMWin.audio.Stop();
+			_sndBGMLoss.audio.Stop();
+			_sndBGMColor.audio.Stop();
+			_bIsHit = false;
+			_goHitEffect.SetActive(false);
+			_goBeam.SetActive(false);
+			PlayAni(EMonster.NO_HIT);
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
+		{
+			_nStep = 2;
+			ShowStep2();
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 2) )
+		{
+			_nStep = 0;
+			HideStep();
 			RestartGame();
 		}
 
@@ -378,6 +410,7 @@ public class Game_Color : MonoBehaviour
 			_fTime = 0f;
 			_sndBGMLoss.audio.Play();
 			_sndBGMColor.audio.Stop();
+			Invoke("ShowStartGuide", 5f);
 		}
 		
 		string strTime = Mathf.Floor(_fTime).ToString();
@@ -409,6 +442,7 @@ public class Game_Color : MonoBehaviour
 		_sndMonsterDie.audio.Play();
 		_sndBGMWin.audio.Play();
 		_sndBGMColor.audio.Stop();
+		Invoke("ShowStartGuide", 5f);
 	}
 
 
@@ -432,12 +466,15 @@ public class Game_Color : MonoBehaviour
 		_bGamePlay = true;
 
 		_fEnemyHP = 1f;
+		_UISprGaugeBar.fillAmount = _fEnemyHP;
 
 		PlayAni(EMonster.IDLE);
 		PlayAni(EMonster.NO_HIT);
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
+		CancelInvoke("ShowStartGuide");
+		HideStartGuide();
 
 
 		_sndBeam.audio.Stop();
@@ -457,9 +494,37 @@ public class Game_Color : MonoBehaviour
 
 
 
+	void ShowStartGuide()
+	{
+		_scrSuccess.Reposition();
+		_scrTimeOut.Reposition();
+		_texStart.SetActive(true);
+	}
+	
+	void HideStartGuide()
+	{
+		_texStart.SetActive(false);
+	}
 
 
 
+	void ShowStep1()
+	{
+		HideStartGuide();
+		_texStep1.SetActive(true);
+	}
+	
+	void ShowStep2()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(true);
+	}
+	
+	void HideStep()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(false);
+	}
 
 
 

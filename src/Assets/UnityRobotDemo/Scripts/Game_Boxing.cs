@@ -64,6 +64,15 @@ public class Game_Boxing : MonoBehaviour
 	float	_fSpeedR = 0f;
 
 
+	public GameObject		_texStart;
+
+	int		_nStep = 0;
+	public	GameObject		_texStep1;
+	public	GameObject		_texStep2;
+
+
+
+
 	// Sound ---------------------
 	public GameObject		_sndPeoPle;
 	public GameObject		_sndBGMWin;
@@ -75,6 +84,17 @@ public class Game_Boxing : MonoBehaviour
 	public GameObject		_sndPunch2;
 	public GameObject		_sndHahaha;
 	public GameObject		_sndKO;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -94,8 +114,29 @@ public class Game_Boxing : MonoBehaviour
 	// Update -------------------------------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] == 1)
+		if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 0) )
 		{
+			_nStep = 1;
+			ShowStep1();
+			_bGamePlay = false;
+			_sndPeoPle.audio.Stop();
+			_sndBGMWin.audio.Stop();
+			_sndBGMLoss.audio.Stop();
+			_sndBGMRocky.audio.Stop();
+			_sndGong1.audio.Stop();
+			_sndGong2.audio.Stop();
+			_sndHahaha.audio.Stop();
+			_sndKO.audio.Stop();
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
+		{
+			_nStep = 2;
+			ShowStep2();
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 2) )
+		{
+			_nStep = 0;
+			HideStep();
 			RestartGame();
 		}
 		
@@ -291,6 +332,7 @@ public class Game_Boxing : MonoBehaviour
 			_sndBGMLoss.audio.Play();
 			_sndGong2.audio.Play();
 			_sndHahaha.audio.Play();
+			Invoke("ShowStartGuide", 5f);
 		}
 
 		string strTime = Mathf.Floor(_fTime).ToString();
@@ -321,6 +363,7 @@ public class Game_Boxing : MonoBehaviour
 		_sndBGMRocky.audio.Stop();
 		_sndBGMWin.audio.Play();
 		_sndKO.audio.Play();
+		Invoke("ShowStartGuide", 5f);
 	}
 
 
@@ -336,12 +379,14 @@ public class Game_Boxing : MonoBehaviour
 
 		_bIsEnableAttack = true;
 		_fEnemyHP = 1f;
+		_UISprGaugeBar.fillAmount = _fEnemyHP;
 
 		_matBoxer.mainTexture = _texBoxer1;
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
-
+		CancelInvoke("ShowStartGuide");
+		HideStartGuide();
 
 
 		_sndPeoPle.audio.Stop();
@@ -356,11 +401,47 @@ public class Game_Boxing : MonoBehaviour
 		_sndPeoPle.audio.Play();
 		_sndGong1.audio.Play();
 		_sndBGMRocky.audio.Play();
-
-
-
 	}
 
+
+
+
+
+
+
+	void ShowStartGuide()
+	{
+		_scrSuccess.Reposition();
+		_scrTimeOut.Reposition();
+		_texStart.SetActive(true);
+	}
+	
+	void HideStartGuide()
+	{
+		_texStart.SetActive(false);
+	}
+
+
+
+
+
+	void ShowStep1()
+	{
+		HideStartGuide();
+		_texStep1.SetActive(true);
+	}
+	
+	void ShowStep2()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(true);
+	}
+	
+	void HideStep()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(false);
+	}
 
 
 

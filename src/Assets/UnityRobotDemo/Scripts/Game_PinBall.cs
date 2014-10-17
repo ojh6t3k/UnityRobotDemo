@@ -44,6 +44,14 @@ public class Game_PinBall : MonoBehaviour
 
 	int _nGetKey = 0;
 
+	public GameObject		_texStart;
+
+
+	int		_nStep = 0;
+	public	GameObject		_texStep1;
+	public	GameObject		_texStep2;
+
+
 
 
 
@@ -80,11 +88,30 @@ public class Game_PinBall : MonoBehaviour
 	// Update -------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] == 1)
+		if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 0) )
 		{
+			_nStep = 1;
+			ShowStep1();
+			_bGamePlay = false;
+			_sndBGMWin.audio.Stop();
+			_sndBGMLoss.audio.Stop();
+			_sndDoor.audio.Stop();
+			_sndBGMPinBall.audio.Stop();
+			_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
+		{
+			_nStep = 2;
+			ShowStep2();
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 2) )
+		{
+			_nStep = 0;
+			HideStep();
 			_bGamePlay = true;
 			RestartGame();
 		}
+
 
 		if (!_bGamePlay)
 			return;
@@ -133,6 +160,8 @@ public class Game_PinBall : MonoBehaviour
 
 			_sndBGMLoss.audio.Play();
 			_sndBGMPinBall.audio.Stop();
+
+			Invoke("ShowStartGuide", 5f);
 		}
 
 
@@ -232,6 +261,7 @@ public class Game_PinBall : MonoBehaviour
 		_scrSuccess.StartMove();
 		_sndBGMWin.audio.Play();
 		_sndBGMPinBall.audio.Stop();
+		Invoke("ShowStartGuide", 5f);
 	}
 
 
@@ -265,7 +295,8 @@ public class Game_PinBall : MonoBehaviour
 
 		_scrSuccess.Reposition();
 		_scrTimeOut.Reposition();
-
+		CancelInvoke("ShowStartGuide");
+		HideStartGuide();
 
 
 		_sndBGMWin.audio.Stop();
@@ -278,6 +309,40 @@ public class Game_PinBall : MonoBehaviour
 
 
 
+
+
+
+	void ShowStartGuide()
+	{
+		_scrSuccess.Reposition();
+		_scrTimeOut.Reposition();
+		_texStart.SetActive(true);
+	}
+
+	void HideStartGuide()
+	{
+		_texStart.SetActive(false);
+	}
+
+
+
+	void ShowStep1()
+	{
+		HideStartGuide();
+		_texStep1.SetActive(true);
+	}
+
+	void ShowStep2()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(true);
+	}
+
+	void HideStep()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(false);
+	}
 
 
 

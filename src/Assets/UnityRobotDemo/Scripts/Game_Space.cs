@@ -42,6 +42,11 @@ public class Game_Space : MonoBehaviour
 	float	_fAngleX = 0f;
 	float	_fAngleY = 0f;
 
+	public GameObject		_texStart;
+
+	int		_nStep = 0;
+	public	GameObject		_texStep1;
+	public	GameObject		_texStep2;
 
 
 
@@ -76,8 +81,27 @@ public class Game_Space : MonoBehaviour
 	// Update ----------------------------------------
 	void Update () 
 	{
-		if (_input_Correction._nUse_D[0] == 1)
+		if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 0) )
 		{
+			_nStep = 1;
+			ShowStep1();
+			_bGamePlay = false;
+			_sndBGMEngine.audio.Stop();
+			_sndBGMSpace.audio.Stop();
+			_sndRunOut.audio.Stop();
+			_sndCrash.audio.Stop();
+			_sndGetEnergy.audio.Stop();
+			CancelInvoke("Add_Score");
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
+		{
+			_nStep = 2;
+			ShowStep2();
+		}
+		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 2) )
+		{
+			_nStep = 0;
+			HideStep();
 			RestartGame();
 		}
 		
@@ -128,6 +152,7 @@ public class Game_Space : MonoBehaviour
 			_sndRunOut.audio.Play();
 			_sndBGMEngine.audio.Stop();
 			_sndBGMSpace.audio.Stop();
+			Invoke("ShowStartGuide", 5f);
 		}
 	}
 
@@ -274,12 +299,13 @@ public class Game_Space : MonoBehaviour
 			Invoke("MakeStone", 2f);
 
 			_scrGameOver.Reposition();
+			CancelInvoke("ShowStartGuide");
+			HideStartGuide();
 			_goEffect.SetActive(true);
 		}
-		else
-		{
+
 			_nScore = -1;
-		}
+
 
 
 		_fRingColor = 0f;
@@ -301,6 +327,40 @@ public class Game_Space : MonoBehaviour
 
 		_sndBGMEngine.audio.Play();
 		_sndBGMSpace.audio.Play();
+	}
+
+
+
+
+	void ShowStartGuide()
+	{
+		_scrGameOver.Reposition();
+		_texStart.SetActive(true);
+	}
+	
+	void HideStartGuide()
+	{
+		_texStart.SetActive(false);
+	}
+
+
+
+	void ShowStep1()
+	{
+		HideStartGuide();
+		_texStep1.SetActive(true);
+	}
+	
+	void ShowStep2()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(true);
+	}
+	
+	void HideStep()
+	{
+		_texStep1.SetActive(false);
+		_texStep2.SetActive(false);
 	}
 
 

@@ -24,6 +24,13 @@ public class RobotConnect : MonoBehaviour
 
 
 
+	public void GotoLauncher()
+	{
+		Application.LoadLevel("Launcher");
+	}
+
+
+
 
 	// Start ------------------------------------------------------------------------------
 	void Start ()
