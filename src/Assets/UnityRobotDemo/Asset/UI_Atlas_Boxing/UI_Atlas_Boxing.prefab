@@ -43,7 +43,7 @@ MonoBehaviour:
   mSprites:
   - name: 0
     x: 1661
-    y: 762
+    y: 794
     width: 75
     height: 129
     borderLeft: 0
@@ -55,8 +55,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 1
-    x: 1892
-    y: 762
+    x: 1154
+    y: 173
     width: 42
     height: 129
     borderLeft: 0
@@ -68,8 +68,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 2
-    x: 1819
-    y: 895
+    x: 1056
+    y: 118
     width: 75
     height: 129
     borderLeft: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: 3
     x: 1976
-    y: 895
+    y: 794
     width: 66
     height: 129
     borderLeft: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 4
-    x: 1029
-    y: 27
+    x: 968
+    y: 118
     width: 84
     height: 129
     borderLeft: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: 5
     x: 1898
-    y: 895
+    y: 794
     width: 74
     height: 129
     borderLeft: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 6
-    x: 1661
-    y: 895
+    x: 1819
+    y: 794
     width: 75
     height: 129
     borderLeft: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 7
-    x: 1818
-    y: 762
+    x: 1154
+    y: 306
     width: 70
     height: 129
     borderLeft: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: 8
     x: 1740
-    y: 895
+    y: 794
     width: 75
     height: 129
     borderLeft: 0
@@ -159,8 +159,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: 9
-    x: 1740
-    y: 762
+    x: 1154
+    y: 439
     width: 74
     height: 129
     borderLeft: 0
@@ -169,6 +169,19 @@ MonoBehaviour:
     borderBottom: 0
     paddingLeft: 13
     paddingRight: 13
+    paddingTop: 0
+    paddingBottom: 0
+  - name: Fight
+    x: 646
+    y: 66
+    width: 318
+    height: 181
+    borderLeft: 0
+    borderRight: 0
+    borderTop: 0
+    borderBottom: 0
+    paddingLeft: 0
+    paddingRight: 0
     paddingTop: 0
     paddingBottom: 0
   - name: gameend_lose
@@ -237,8 +250,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: left_enemy
-    x: 646
-    y: 59
+    x: 1661
+    y: 927
     width: 379
     height: 97
     borderLeft: 0
@@ -250,8 +263,8 @@ MonoBehaviour:
     paddingTop: 0
     paddingBottom: 0
   - name: left_healthbar_cover
-    x: 646
-    y: 160
+    x: 1154
+    y: 572
     width: 468
     height: 87
     borderLeft: 0
@@ -264,7 +277,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: left_healthbar_inside
     x: 605
-    y: 537
+    y: 507
     width: 26
     height: 26
     borderLeft: 2
@@ -290,7 +303,7 @@ MonoBehaviour:
     paddingBottom: 0
   - name: White
     x: 605
-    y: 507
+    y: 537
     width: 26
     height: 26
     borderLeft: 2

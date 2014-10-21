@@ -70,6 +70,8 @@ public class Game_Boxing : MonoBehaviour
 	public	GameObject		_texStep1;
 	public	GameObject		_texStep2;
 
+	public	UISprite		_sprFightUI;
+
 
 
 
@@ -103,7 +105,7 @@ public class Game_Boxing : MonoBehaviour
 	void Start () 
 	{
 		_input_Correction.Set_BufferCount(4);
-		_input_Correction.SetDistance(7f);
+		_input_Correction.SetDistance(0f);
 		PlayAni(EAttack.IDLE);
 	}
 
@@ -127,6 +129,8 @@ public class Game_Boxing : MonoBehaviour
 			_sndGong2.audio.Stop();
 			_sndHahaha.audio.Stop();
 			_sndKO.audio.Stop();
+			CancelInvoke("ShowStartGuide");
+			HideStartGuide();
 		}
 		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
 		{
@@ -172,7 +176,7 @@ public class Game_Boxing : MonoBehaviour
 		if (!_bIsEnableAttack)
 			return;
 
-		if (_fSpeedL < -30f)
+		if (_fSpeedL > 30f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.L_POWER);
@@ -181,9 +185,10 @@ public class Game_Boxing : MonoBehaviour
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.1f;
 			_sndPunch2.audio.Play();
+			_sprFightUI.enabled = false;
 			//Debug.Log("LL");
 		}
-		else if (_fSpeedL < -20f)
+		else if (_fSpeedL > 20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.L_ZAP);
@@ -192,9 +197,10 @@ public class Game_Boxing : MonoBehaviour
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
 			_sndPunch1.audio.Play();
+			_sprFightUI.enabled = false;
 			//Debug.Log("L");
 		}
-		else if (_fSpeedM < -20f)
+		else if (_fSpeedM > 20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.FRONT);
@@ -203,9 +209,10 @@ public class Game_Boxing : MonoBehaviour
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
 			_sndPunch1.audio.Play();
+			_sprFightUI.enabled = false;
 			//Debug.Log("M");
 		}
-		else if (_fSpeedR < -30f)
+		else if (_fSpeedR > 30f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.R_POWER);
@@ -214,9 +221,10 @@ public class Game_Boxing : MonoBehaviour
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.1f;
 			_sndPunch2.audio.Play();
+			_sprFightUI.enabled = false;
 			//Debug.Log("RR");
 		}
-		else if (_fSpeedR < -20f)
+		else if (_fSpeedR > 20f)
 		{
 			_bIsEnableAttack = false;
 			PlayAni(EAttack.R_ZAP);
@@ -225,6 +233,7 @@ public class Game_Boxing : MonoBehaviour
 			_fDamageDistance = -7f;
 			_fEnemyHP = _fEnemyHP - 0.03f;
 			_sndPunch1.audio.Play();
+			_sprFightUI.enabled = false;
 			//Debug.Log("R");
 		}
 
@@ -289,6 +298,7 @@ public class Game_Boxing : MonoBehaviour
 		if (!_aniBoxer.isPlaying)
 		{
 			_bIsEnableAttack = true;
+			_sprFightUI.enabled = true;
 			_aniBoxer.CrossFade("Idle", 1f);
 		}
 	}
@@ -321,7 +331,7 @@ public class Game_Boxing : MonoBehaviour
 	// 시간 제어---------------------------------------------
 	void Update_Time()
 	{
-		if (_fTime <= 0f)
+		if ( (_fTime <= 0f) && (_bGamePlay) )
 		{
 			_bGamePlay = false;
 			_scrTimeOut.StartMove();
@@ -378,6 +388,8 @@ public class Game_Boxing : MonoBehaviour
 		_bGamePlay = true;
 
 		_bIsEnableAttack = true;
+
+		_sprFightUI.enabled = true;
 		_fEnemyHP = 1f;
 		_UISprGaugeBar.fillAmount = _fEnemyHP;
 

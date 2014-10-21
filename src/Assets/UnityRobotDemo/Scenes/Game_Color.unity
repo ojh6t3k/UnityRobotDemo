@@ -3438,9 +3438,9 @@ MonoBehaviour:
   _bShowAnalogue: 0101010000000000
   _bShowDigital: 01000000000000000000000000000000
   _strAName:
-  - Left
-  - Middle
-  - Right
+  - Red
+  - Green
+  - Blue
   - 
   - 
   - 

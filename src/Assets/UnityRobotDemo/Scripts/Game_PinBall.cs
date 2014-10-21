@@ -98,6 +98,8 @@ public class Game_PinBall : MonoBehaviour
 			_sndDoor.audio.Stop();
 			_sndBGMPinBall.audio.Stop();
 			_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);
+			CancelInvoke("ShowStartGuide");
+			HideStartGuide();
 		}
 		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
 		{
@@ -150,7 +152,7 @@ public class Game_PinBall : MonoBehaviour
 	// 시간 제어---------------------------------------------
 	void Update_Time()
 	{
-		if (_fTime <= 0f)
+		if ((_fTime <= 0f) && (_bGamePlay) )
 		{
 			_bGamePlay = false;
 			_goBall.transform.localPosition = new Vector3(0f, -20f, 0f);

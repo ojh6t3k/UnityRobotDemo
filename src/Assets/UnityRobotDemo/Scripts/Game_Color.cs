@@ -159,6 +159,8 @@ public class Game_Color : MonoBehaviour
 			_goHitEffect.SetActive(false);
 			_goBeam.SetActive(false);
 			PlayAni(EMonster.NO_HIT);
+			CancelInvoke("ShowStartGuide");
+			HideStartGuide();
 		}
 		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
 		{
@@ -401,7 +403,7 @@ public class Game_Color : MonoBehaviour
 	// 시간 제어---------------------------------------------
 	void Update_Time()
 	{
-		if (_fTime <= 0f)
+		if ( (_fTime < 0f) && (_bGamePlay) )
 		{
 			_bGamePlay = false;
 			_goBeam.SetActive(false);

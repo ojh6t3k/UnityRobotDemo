@@ -92,6 +92,8 @@ public class Game_Space : MonoBehaviour
 			_sndCrash.audio.Stop();
 			_sndGetEnergy.audio.Stop();
 			CancelInvoke("Add_Score");
+			CancelInvoke("ShowStartGuide");
+			HideStartGuide();
 		}
 		else if ( (_input_Correction._nUse_D[0] == 1) && (_nStep == 1) )
 		{
@@ -141,7 +143,7 @@ public class Game_Space : MonoBehaviour
 		_fFuel = _fFuel - Time.deltaTime * 0.05f;
 		_UISprFuel.fillAmount = _fFuel;
 
-		if (_fFuel <= 0f)
+		if ( (_fFuel <= 0f) && (_bGamePlay) )
 		{
 			_goSpeed.SetActive(false);
 			_scrGameOver.StartMove();
